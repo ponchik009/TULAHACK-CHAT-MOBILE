@@ -1,10 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+
+import AuthPage from "./pages/AuthPage/AuthPage";
 
 export default function App() {
+  const [isAuth, setIsAuth] = React.useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      {isAuth ? (
+        <View>
+          <Text>Open up App.tsx to start working on your app!</Text>
+        </View>
+      ) : (
+        <AuthPage />
+      )}
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +24,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#161819",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
