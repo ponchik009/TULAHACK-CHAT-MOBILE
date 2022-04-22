@@ -1,7 +1,37 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import React from "react";
+import { Image, Text, View } from "react-native";
+import LoginBox from "../../components/AuthBox/LoginBox";
+import RegisterBox from "../../components/AuthBox/RegisterBox";
+import { styles } from "./styles";
 
-export default function AuthPage() {
+interface IAuthProps {
+  handleMainPageOpen: () => void;
+}
+
+const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
+  const [isLoginBox, setIsLoginBox] = React.useState(true);
+
+  const handleRegiserOpen = () => {
+    setIsLoginBox(false);
+  };
+  const handleLogInOpen = () => {
+    setIsLoginBox(true);
+  };
+
+  const handleLogIn = (login: string, password: string) => {
+    // какие-то действия
+    handleMainPageOpen();
+  };
+
+  const handleRegister = (
+    login: string,
+    password: string,
+    confirmPassword: string
+  ) => {
+    // какие-то действия
+    handleMainPageOpen();
+  };
+
   return (
     <>
       <View style={styles.logo}>
@@ -9,60 +39,20 @@ export default function AuthPage() {
         <Text style={styles.logoText}>Chat</Text>
       </View>
       <View style={styles.main}>
-        <Text style={styles.defaultText}>Вход</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Логин"
-          textContentType="nickname"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Пароль"
-          secureTextEntry
-          textContentType="password"
-        />
-        <View style={styles.registerBlock}>
-          <Text style={styles.defaultText}>Don't have an account?</Text>
-          <Button title="Register" onPress={() => {}} />
-        </View>
+        {isLoginBox ? (
+          <LoginBox
+            handleChangePress={handleRegiserOpen}
+            handleLogInPress={handleLogIn}
+          />
+        ) : (
+          <RegisterBox
+            handleChangePress={handleLogInOpen}
+            handleRegisterPress={handleRegister}
+          />
+        )}
       </View>
     </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  logo: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-  },
-  main: {
-    flex: 2,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    width: "100%",
-  },
-  registerBlock: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  logoText: {
-    fontSize: 30,
-    color: "#fff",
-  },
-  defaultText: {
-    fontSize: 20,
-    color: "#fff",
-  },
-  input: {
-    borderStyle: "solid",
-    borderBottomWidth: 1,
-    width: "80%",
-    fontSize: 20,
-    padding: 10,
-    paddingBottom: 5,
-    marginVertical: 10,
-    backgroundColor: "#99c",
-    textAlign: "center",
-  },
-});
+export default AuthPage;
