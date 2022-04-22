@@ -56,10 +56,25 @@ function MyDrawer() {
   );
 }
 
+function MyDrawerRight() {
+  return (
+    <Drawer.Navigator
+      useLegacyImplementation
+      drawerContent={(props) => <CustomDrawerContent {...props}
+        drawerPosition="right" />
+      }
+    >
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Notifications" component={Notifications} />
+    </Drawer.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <MyDrawer />
+      {/* <MyDrawer /> */}
+      <MyDrawerRight />
     </NavigationContainer>
   );
 }
