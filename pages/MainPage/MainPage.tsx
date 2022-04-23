@@ -18,7 +18,6 @@ export let navigateKostil: any = undefined;
 
 const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
   navigateKostil = navigation;
-  const handleLogOut = () => { };
 
   const sideBarRef = React.useRef<Swipeable>(null);
   const message = useInput("");

@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import {
   TextInput,
-  TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
 
@@ -91,7 +90,7 @@ const CreateChannel = () => {
             ]}
           />
         </View>
-        <Button title="Создать" onPress={() => {}} />
+        <Button title="Создать" onPress={() => { }} />
       </View>
     </TouchableOpacity>
   );

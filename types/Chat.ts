@@ -1,4 +1,4 @@
-enum ChatType {
+export enum ChatType {
   PRIVATE,
   PUBLIC,
   CHANEL,
