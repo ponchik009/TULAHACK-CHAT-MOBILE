@@ -2,11 +2,10 @@ import "react-native-gesture-handler";
 import React from "react";
 import { SafeAreaView, StyleSheet, View, Text, Dimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import LeftSideBar from "./components/SideBar/LeftSideBar";
-import RightSideBar from "./components/SideBar/RightSideBar";
+
 import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
+import { NativeBaseProvider } from "native-base";
 
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
@@ -30,7 +29,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <NativeBaseProvider>
       <StatusBar style="auto" />
       <SafeAreaView style={styles.wrapper}>
         {isAuth ? (
@@ -39,7 +38,7 @@ const App = () => {
           <AuthPage handleMainPageOpen={handleMainPageOpen} />
         )}
       </SafeAreaView>
-    </>
+    </NativeBaseProvider>
   );
 };
 const styles = StyleSheet.create({

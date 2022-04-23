@@ -15,6 +15,7 @@ import LeftSideBar from "../../components/SideBar/LeftSideBar";
 import RightSideBar from "../../components/SideBar/RightSideBar";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import Message from "../../components/Message";
+import { useInput } from "../../hooks/useInput";
 
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
@@ -29,6 +30,8 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
   };
 
   const sideBarRef = React.useRef<Swipeable>(null);
+
+  const message = useInput("");
 
   return (
     <Swipeable
@@ -102,7 +105,12 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TextInput placeholder="Написать" style={styles.input} />
+          <TextInput
+            placeholder="Написать"
+            style={styles.input}
+            value={message.value}
+            onChangeText={message.onChange}
+          />
           <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
@@ -154,14 +162,16 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 40,
+    fontSize: 30,
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    lineHeight: 40,
     color: "#fff",
     backgroundColor: "#161819",
     borderRadius: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 export default MainPage;
