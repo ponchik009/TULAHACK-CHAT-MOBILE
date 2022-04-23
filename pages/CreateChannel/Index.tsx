@@ -12,12 +12,14 @@ import {
   TextInput,
 } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
+import { createChannel } from "../../api/channel";
 
-const CreateChannel = () => {
+const CreateChannel = ({ navigation }: any) => {
   const [image, setImage] = React.useState<string | null>(null);
+  const [name, setName] = React.useState("");
+  const [about, setAbout] = React.useState("");
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -29,6 +31,16 @@ const CreateChannel = () => {
       setImage(result.uri);
     }
   };
+
+  const handleSubmit = async () => {
+    try {
+      await createChannel(name, about, image)
+
+    } catch (error) {
+
+    }
+    navigation.navigate('Home')
+  }
 
   return (
     <TouchableOpacity
@@ -67,6 +79,8 @@ const CreateChannel = () => {
                 flexGrow: 1,
               },
             ]}
+            value={name}
+            onChangeText={setName}
           />
         </View>
         <View
@@ -88,9 +102,11 @@ const CreateChannel = () => {
                 flexGrow: 1,
               },
             ]}
+            value={about}
+            onChangeText={setAbout}
           />
         </View>
-        <Button title="Создать" onPress={() => { }} />
+        <Button title="Создать" onPress={handleSubmit} />
       </View>
     </TouchableOpacity>
   );
