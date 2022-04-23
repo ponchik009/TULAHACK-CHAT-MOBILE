@@ -36,88 +36,89 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
     handleAuthPageOpen();
   };
 
+  const sideBarRef = React.useRef<Swipeable>(null);
+
   return (
     <Swipeable
       renderLeftActions={LeftSideBar}
       renderRightActions={RightSideBar}
       overshootLeft={false}
       overshootRight={false}
-    // onSwipeableRightOpen={swipeFromRightOpen}
-    // onSwipeableLeftOpen={swipeFromLeftOpen}
+      ref={sideBarRef}
+      // onSwipeableRightOpen={swipeFromRightOpen}
+      // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>
-          <TouchableHighlight style={styles.appBar__menu} onPress={() => { }}>
-            <View >
+          <TouchableHighlight
+            style={styles.appBar__menu}
+            onPress={() => {
+              sideBarRef.current?.openLeft();
+            }}
+          >
+            <View>
               <Image
-                source={require('../../assets/icons/icons8-меню-24.svg')}
+                source={require("../../assets/icons/icons8-меню-24.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <Text style={styles.chatName}>
-            Название чата
-          </Text>
-          <TouchableHighlight onPress={() => { }}>
+          <Text style={styles.chatName}>Название чата</Text>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/icons8-поиск.svg')}
+                source={require("../../assets/icons/icons8-поиск.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/group-profile-users_icon-icons.com_73540.svg')}
+                source={require("../../assets/icons/group-profile-users_icon-icons.com_73540.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/3844442-dot-menu-more-vertical_110310.svg')}
+                source={require("../../assets/icons/3844442-dot-menu-more-vertical_110310.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
         </View>
-        <View style={{ flex: 1, backgroundColor: '#303030' }}>
+        <View style={{ flex: 1, backgroundColor: "#303030" }}>
           <Message />
-
         </View>
         <View style={styles.bottomBar}>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.svg')}
+                source={require("../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/add_image_icon_215147.svg')}
+                source={require("../../assets/icons/add_image_icon_215147.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TextInput
-            placeholder="Написать"
-            style={styles.input}
-          />
-          <TouchableHighlight onPress={() => { }}>
+          <TextInput placeholder="Написать" style={styles.input} />
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require('../../assets/icons/-send_90420.svg')}
+                source={require("../../assets/icons/-send_90420.svg")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
         </View>
-
       </SafeAreaView>
     </Swipeable>
   );
@@ -129,35 +130,34 @@ const styles = StyleSheet.create({
     height: height - 100,
   },
   appBar: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#262626',
-    padding: 10
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#262626",
+    padding: 10,
   },
   appBar__menu: {
-    marginRight: 10
+    marginRight: 10,
   },
 
   chatName: {
     flex: 1,
-    color: '#fff',
-    fontWeight: '500'
+    color: "#fff",
+    fontWeight: "500",
   },
 
   bottomBar: {
-    width: '100%',
-    flexDirection: 'row',
-    backgroundColor: '#303030',
-    alignItems: 'center',
-    padding: 10
+    width: "100%",
+    flexDirection: "row",
+    backgroundColor: "#303030",
+    alignItems: "center",
+    padding: 10,
   },
   buttonImageIconStyle: {
     padding: 10,
     margin: 5,
     height: 25,
     width: 25,
-    resizeMode: 'stretch',
   },
   input: {
     flex: 1,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     padding: 10,
     lineHeight: 40,
     color: "#fff",
-    borderRadius: 20
+    borderRadius: 20,
   },
 });
 export default MainPage;

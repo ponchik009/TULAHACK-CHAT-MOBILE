@@ -74,6 +74,32 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
         renderItem={renderItem}
         style={{ paddingVertical: 10, marginTop: 10 }}
       />
+      <TouchableOpacity
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View
+          style={{
+            borderRadius: 50,
+            width: 56,
+            height: 56,
+            backgroundColor: "#263893",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: 10,
+            marginLeft: 5,
+          }}
+        >
+          <Text style={{ fontSize: 40, color: "#fff" }}>+</Text>
+        </View>
+        <Text style={{ fontSize: 25, color: "#fff", marginLeft: 10 }}>
+          Создать чат
+        </Text>
+      </TouchableOpacity>
     </>
   );
 };

@@ -44,7 +44,12 @@ const LeftMenu = () => {
         width: (width * 2) / 2.5,
       }}
     >
-      <View style={{ backgroundColor: "#1C1E1F" }}>
+      <View
+        style={{
+          backgroundColor: "#1C1E1F",
+          justifyContent: "flex-start",
+        }}
+      >
         <ChannelList
           channels={channels}
           activeItem={activeChannel}

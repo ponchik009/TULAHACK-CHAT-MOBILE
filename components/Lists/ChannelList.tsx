@@ -1,5 +1,12 @@
 import React from "react";
-import { FlatList, Image, ListRenderItem, StyleSheet } from "react-native";
+import {
+  FlatList,
+  Image,
+  ListRenderItem,
+  StyleSheet,
+  View,
+  Text,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { IChannel } from "../../types/entities";
@@ -32,12 +39,28 @@ const ChannelList: React.FC<IChannelListProps> = ({
   );
 
   return (
-    <FlatList
-      data={channels}
-      keyExtractor={(channel) => String(channel.id)}
-      renderItem={renderItem}
-      style={{ paddingVertical: 10 }}
-    />
+    <>
+      <FlatList
+        data={channels}
+        keyExtractor={(channel) => String(channel.id)}
+        renderItem={renderItem}
+        style={{ paddingVertical: 10 }}
+      />
+      <TouchableOpacity
+        style={{
+          borderRadius: 50,
+          width: 56,
+          height: 56,
+          backgroundColor: "#263893",
+          justifyContent: "center",
+          alignItems: "center",
+          marginBottom: 10,
+          marginLeft: 5,
+        }}
+      >
+        <Text style={{ fontSize: 40, color: "#fff" }}>+</Text>
+      </TouchableOpacity>
+    </>
   );
 };
 
