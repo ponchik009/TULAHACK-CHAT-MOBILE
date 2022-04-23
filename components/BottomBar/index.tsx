@@ -7,6 +7,7 @@ import {
     TextInput,
 } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { Colors, IconButton } from "react-native-paper";
 
 export interface BottomBarProps {
     message: {
@@ -18,36 +19,31 @@ export interface BottomBarProps {
 const BottomBar: React.FC<BottomBarProps> = ({ message }) => {
     return (
         <View style={styles.bottomBar}>
-            <TouchableHighlight onPress={() => { }}>
-                <View>
-                    <Image
-                        source={require("../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => { }}>
-                <View>
-                    <Image
-                        source={require("../../assets/icons/add_image_icon_215147.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
+            <IconButton
+                icon="camera"
+                color={Colors.white}
+                size={20}
+                onPress={() => { }}
+            />
+            <IconButton
+                icon="image-plus"
+                color={Colors.white}
+                size={20}
+                onPress={() => { }}
+            />
+
             <TextInput
                 placeholder="Написать"
                 style={styles.input}
                 value={message.value}
                 onChangeText={message.onChange}
             />
-            <TouchableHighlight onPress={() => { }}>
-                <View>
-                    <Image
-                        source={require("../../assets/icons/send_90420.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
+            <IconButton
+                icon="send"
+                color={Colors.white}
+                size={20}
+                onPress={() => { }}
+            />
         </View>
     )
 }

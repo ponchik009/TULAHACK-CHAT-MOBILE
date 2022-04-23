@@ -8,56 +8,55 @@ import {
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { TouchableHighlight } from "react-native-gesture-handler";
-
+import { Button, Menu, Divider, Provider, IconButton, Colors } from 'react-native-paper';
 export interface AppBarProps {
     sideBarRef: RefObject<Swipeable>
 }
 
 const AppBar: React.FC<AppBarProps> = ({ sideBarRef }: any) => {
+    const [visible, setVisible] = React.useState(false);
+
+    const openMenu = () => setVisible(true);
+
+    const closeMenu = () => setVisible(false);
     return (
         <View style={styles.appBar}>
-            <TouchableHighlight
-                style={styles.appBar__menu}
-                onPress={() => {
-                    sideBarRef.current?.openLeft();
-                }}
-            >
-                <View>
-                    <Image
-                        source={require("../../assets/icons/icons8-меню-24.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
+            <IconButton
+                icon="menu"
+                color={Colors.white}
+                size={20}
+                onPress={() => { sideBarRef.current?.openLeft() }}
+                style={styles.buttonImageIconStyle}
+            />
+
             <Text style={styles.chatName}>Название чата</Text>
-            <TouchableHighlight onPress={() => { }}>
-                <View>
-                    <Image
-                        source={require("../../assets/icons/icons8-поиск.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
-            <TouchableHighlight
-                onPress={() => {
-                    sideBarRef.current?.openRight();
-                }}
-            >
-                <View>
-                    <Image
-                        source={require("../../assets/icons/group-profile-users_icon-icons.com_73540.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => { }}>
-                <View>
-                    <Image
-                        source={require("../../assets/icons/3844442-dot-menu-more-vertical_110310.png")}
-                        style={styles.buttonImageIconStyle}
-                    />
-                </View>
-            </TouchableHighlight>
+            <IconButton
+                icon="magnify"
+                color={Colors.white}
+                size={20}
+
+                onPress={() => console.log('Pressed')}
+            />
+            <IconButton
+                icon="account-multiple"
+                color={Colors.white}
+                size={20}
+                onPress={() => { sideBarRef.current?.openRight() }}
+            />
+
+            <Menu
+                visible={visible}
+                onDismiss={closeMenu}
+                anchor={<IconButton
+                    icon="dots-vertical"
+                    color={Colors.white}
+                    size={20}
+                    onPress={() => openMenu()}
+                />}>
+                <Menu.Item onPress={() => { }} title="Закреплённые сообщения" />
+                <Menu.Item onPress={() => { }} title="Параметры канала" />
+                <Menu.Item onPress={() => { }} title="Параметры уведомлений" />
+            </Menu>
         </View>
     )
 }

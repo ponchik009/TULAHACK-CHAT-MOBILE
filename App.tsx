@@ -4,15 +4,11 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  Text,
   Dimensions,
-  Button,
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
-
 import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
-import { GlobalProvider } from './state/GlobalProvider';
+import { Provider } from 'react-native-paper';
 
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
@@ -36,37 +32,39 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
-      {/* <GlobalProvider> */}
-      {isAuth ? (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={MainPage}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Profile"
-              component={AuthPage}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="CreateChat" component={CreateChat} />
-            <Stack.Screen name="CreateChannel" component={CreateChannel} />
-            <Stack.Screen name="FindChannel" component={FindChannel} />
-            <Stack.Screen name="InviteUsers" component={InviteUsers} />
-            <Stack.Screen name="UserSettings"  >
-              {props => <UserSettings {...props} setIsAuth={setIsAuth} />}
-            </Stack.Screen>
-          </Stack.Navigator>
-        </NavigationContainer>
-      ) : (
-        <View style={styles.wrapper}>
-          <AuthPage handleMainPageOpen={handleMainPageOpen} />
-        </View>
-      )}
-      {/* </GlobalProvider> */}
-    </SafeAreaView>
+    <Provider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
+        {/* <GlobalProvider> */}
+        {isAuth ? (
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={MainPage}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Profile"
+                component={AuthPage}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="CreateChat" component={CreateChat} />
+              <Stack.Screen name="CreateChannel" component={CreateChannel} />
+              <Stack.Screen name="FindChannel" component={FindChannel} />
+              <Stack.Screen name="InviteUsers" component={InviteUsers} />
+              <Stack.Screen name="UserSettings"  >
+                {props => <UserSettings {...props} setIsAuth={setIsAuth} />}
+              </Stack.Screen>
+            </Stack.Navigator>
+          </NavigationContainer>
+        ) : (
+          <View style={styles.wrapper}>
+            <AuthPage handleMainPageOpen={handleMainPageOpen} />
+          </View>
+        )}
+        {/* </GlobalProvider> */}
+      </SafeAreaView>
+    </Provider>
   );
 };
 const styles = StyleSheet.create({
@@ -74,8 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#161819",
     justifyContent: "center",
     alignItems: "center",
-    width,
-    height,
+    flex: 1,
   },
 });
 export default App;
