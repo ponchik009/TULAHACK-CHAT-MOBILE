@@ -6,9 +6,11 @@ import {
   Text,
   TouchableHighlight,
   Image,
-  Button,
+
 } from "react-native";
+import { Button } from 'react-native-paper';
 import { navigateKostil } from "../../pages/MainPage/MainPage";
+import { Colors, IconButton } from "react-native-paper";
 
 
 const RightSideBar = () => {
@@ -20,56 +22,46 @@ const RightSideBar = () => {
       <View style={styles.content}>
         <Text style={styles.header}>Название чата</Text>
         <View style={styles.buttons}>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/icons8-поиск.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/icons8-поиск.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/icons8-поиск.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/icons8-поиск.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
+          <IconButton
+            icon="magnify"
+            color={Colors.white}
+            size={20}
+            onPress={() => { }}
+          />
+          <IconButton
+            icon="pin"
+            color={Colors.white}
+            size={20}
+            onPress={() => { }}
+          />
+          <IconButton
+            icon="bell"
+            color={Colors.white}
+            size={20}
+            onPress={() => { }}
+          />
+          <IconButton
+            icon="cog"
+            color={Colors.white}
+            size={20}
+            onPress={() => { }}
+          />
+
         </View>
         <View>
-          <Button
-            onPress={handleInviteUsers}
-            title="Пригласить участников"
-          />
+          <Button icon="account-plus" mode="text" color="white" onPress={() => handleInviteUsers()}>
+            Пригласить участников
+          </Button>
         </View>
         <Text style={styles.users__header}>В сети</Text>
         <View style={styles.users}>
           <View style={styles.user}>
-            <TouchableHighlight onPress={() => { }}>
-              <View>
-                <Image
-                  source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
-                  style={styles.buttonImageIconStyle}
-                />
-              </View>
-            </TouchableHighlight>
+            <IconButton
+              icon="account"
+              color={Colors.white}
+              size={20}
+              onPress={() => { }}
+            />
             <Text style={styles.username}>CoolSheff</Text>
           </View>
         </View>

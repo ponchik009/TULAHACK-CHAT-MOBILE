@@ -2,19 +2,18 @@ import "react-native-gesture-handler";
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { Colors, IconButton } from "react-native-paper";
 
 const Message: React.FC = () => {
   return (
     <View style={styles.message}>
       <View>
-        <TouchableHighlight onPress={() => {}}>
-          <View>
-            <Image
-              source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
-              style={styles.buttonImageIconStyle}
-            />
-          </View>
-        </TouchableHighlight>
+        <IconButton
+          icon="account"
+          color={Colors.white}
+          size={20}
+          onPress={() => { }}
+        />
       </View>
       <View style={styles.message__content}>
         <View style={styles.message__meta}>
@@ -58,14 +57,7 @@ const styles = StyleSheet.create({
   },
   message__date: {
     color: "#777",
-  },
-  buttonImageIconStyle: {
-    padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: "stretch",
-  },
+  }
 });
 
 export default Message;

@@ -8,6 +8,7 @@ import {
   Text,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button, Colors, IconButton } from "react-native-paper";
 import { navigateKostil } from "../../pages/MainPage/MainPage";
 
 import { IChannel, IChat } from "../../types/entities";
@@ -75,33 +76,10 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
         renderItem={renderItem}
         style={{ paddingVertical: 10, marginTop: 10 }}
       />
-      <TouchableOpacity
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onPress={() => navigateKostil.navigate('CreateChat')}
-      >
-        <View
-          style={{
-            borderRadius: 50,
-            width: 56,
-            height: 56,
-            backgroundColor: "#263893",
-            justifyContent: "center",
-            alignItems: "center",
-            marginBottom: 10,
-            marginLeft: 5,
-          }}
-        >
-          <Text style={{ lineHeight: 56, fontSize: 40, color: "#fff", alignItems: 'center', }}>+</Text>
-        </View>
-        <Text style={{ fontSize: 25, color: "#fff", marginLeft: 10, alignItems: 'center' }}>
-          Создать чат
-        </Text>
-      </TouchableOpacity>
+      <Button icon="plus-circle" mode="text" contentStyle={styles.btn} style={styles.btn} color="white" onPress={() => navigateKostil.navigate('CreateChat')}>
+        Создать чат
+      </Button>
+
     </>
   );
 };
@@ -113,6 +91,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 5,
     flexDirection: "row",
+  },
+  btn: {
+    fontSize: 100,
+    alignSelf: 'stretch'
   },
   selectedChat: {
     backgroundColor: "#27292E",

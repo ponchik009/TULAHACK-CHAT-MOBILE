@@ -6,6 +6,7 @@ import ChatList from "../../../components/Lists/ChatList";
 import ChannelList from "../../../components/Lists/ChannelList";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { navigateKostil } from "../MainPage";
+import { Colors, IconButton } from "react-native-paper";
 
 const LeftMenu = () => {
   const [channels, setChannels] = React.useState<IChannel[]>([
@@ -56,24 +57,21 @@ const LeftMenu = () => {
       </View>
       <View style={styles.bottomBar}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <TouchableHighlight onPress={() => { }}>
-            <View >
-              <Image
-                source={require("../../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
-                style={styles.myAvatar}
-              />
-            </View>
-          </TouchableHighlight>
+          <IconButton
+            icon="account"
+            color={Colors.white}
+            size={20}
+            onPress={() => { }}
+          />
           <Text style={styles.username}>CoolSheff</Text>
         </View>
-        <TouchableHighlight onPress={handleClickUserSettings}>
-          <View >
-            <Image
-              source={require("../../../assets/icons/gear.png")}
-              style={styles.myAvatar}
-            />
-          </View>
-        </TouchableHighlight>
+
+        <IconButton
+          icon="cog"
+          color={Colors.white}
+          size={20}
+          onPress={() => { handleClickUserSettings() }}
+        />
       </View>
     </View>
   );

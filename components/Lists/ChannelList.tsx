@@ -6,11 +6,12 @@ import {
   StyleSheet,
   View,
   Text,
-  Modal,
+
   Alert,
   Pressable,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button, Colors, IconButton, Modal, Portal } from "react-native-paper";
 import { navigateKostil } from "../../pages/MainPage/MainPage";
 
 import { IChannel } from "../../types/entities";
@@ -41,15 +42,19 @@ const ChannelList: React.FC<IChannelListProps> = ({
       />
     </TouchableOpacity>
   );
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = { backgroundColor: 'white', padding: 20 };
 
   const handleClickCreateChannel = () => {
     navigateKostil.navigate('CreateChannel')
-    setModalVisible(false)
+    hideModal()
   }
   const handleClickFindChannel = () => {
     navigateKostil.navigate('FindChannel')
-    setModalVisible(false)
+    hideModal()
   }
   return (
     <>
@@ -59,48 +64,26 @@ const ChannelList: React.FC<IChannelListProps> = ({
         renderItem={renderItem}
         style={{ paddingVertical: 10 }}
       />
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <Pressable style={styles.centeredView} onPress={() => setModalVisible(!modalVisible)}>
+      <Portal>
+        <Modal visible={visible} dismissable onDismiss={hideModal} contentContainerStyle={styles.centeredView}>
           <View style={styles.modalView}>
-            <Pressable
-              style={[styles.button]}
-              onPress={handleClickCreateChannel}
-            >
+            <Button style={styles.button} color="#333" mode="contained" onPress={() => handleClickCreateChannel()}>
               <Text style={styles.textStyle}>Создать канал</Text>
-            </Pressable>
-
-            <Pressable
-              style={[styles.button]}
-              onPress={handleClickFindChannel}
-            >
+            </Button>
+            <Button style={styles.button} color="#333" mode="contained" onPress={() => handleClickFindChannel()}>
               <Text style={styles.textStyle}>Присоединиться к каналу</Text>
-            </Pressable>
+            </Button>
           </View>
-        </Pressable>
-      </Modal>
-      <TouchableOpacity
-        style={{
-          borderRadius: 50,
-          width: 56,
-          height: 56,
-          backgroundColor: "#263893",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: 10,
-          marginLeft: 5,
-        }}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={{ fontSize: 40, color: "#fff" }}>+</Text>
-      </TouchableOpacity>
+
+        </Modal>
+      </Portal>
+      <IconButton
+        icon="plus-circle"
+        color={Colors.white}
+        size={50}
+        onPress={() => { showModal() }}
+      />
+
     </>
   );
 };
@@ -116,12 +99,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#27292E",
   },
   centeredView: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    position: 'absolute',
+    bottom: 10,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
-    flex: 1,
     justifyContent: "center",
     alignItems: "flex-end",
-
   },
   modalView: {
     flex: 1,
@@ -143,11 +127,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#333',
-    borderRadius: 2,
     marginBottom: 5,
-    padding: 10,
-    elevation: 2
   },
   textStyle: {
     color: "white",
