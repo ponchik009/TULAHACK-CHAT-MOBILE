@@ -19,34 +19,34 @@ const RightSideBar = () => {
       <View style={styles.content}>
         <Text style={styles.header}>Название чата</Text>
         <View style={styles.buttons}>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require("../../assets/icons/icons8-поиск.svg")}
+                source={require("../../assets/icons/icons8-поиск.png")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require("../../assets/icons/icons8-поиск.svg")}
+                source={require("../../assets/icons/icons8-поиск.png")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require("../../assets/icons/icons8-поиск.svg")}
+                source={require("../../assets/icons/icons8-поиск.png")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
+          <TouchableHighlight onPress={() => {}}>
             <View>
               <Image
-                source={require("../../assets/icons/icons8-поиск.svg")}
+                source={require("../../assets/icons/icons8-поиск.png")}
                 style={styles.buttonImageIconStyle}
               />
             </View>
@@ -55,14 +55,13 @@ const RightSideBar = () => {
         <View>
           <Button
             onPress={() => console.log("invite")}
-
             title="Пригласить участников"
           />
         </View>
         <Text style={styles.users__header}>В сети</Text>
         <View style={styles.users}>
           <View style={styles.user}>
-            <TouchableHighlight onPress={() => { }}>
+            <TouchableHighlight onPress={() => {}}>
               <View>
                 <Image
                   source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
