@@ -17,6 +17,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import Message from "../../components/Message";
 import { useInput } from "../../hooks/useInput";
 import AppBar from "../../components/Appbar";
+import BottomBar from "../../components/BottomBar";
 
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
@@ -51,38 +52,7 @@ const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
           <Message />
           <Message />
         </ScrollView>
-        <View style={styles.bottomBar}>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/add_image_icon_215147.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TextInput
-            placeholder="Написать"
-            style={styles.input}
-            value={message.value}
-            onChangeText={message.onChange}
-          />
-          <TouchableHighlight onPress={() => { }}>
-            <View>
-              <Image
-                source={require("../../assets/icons/send_90420.png")}
-                style={styles.buttonImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-        </View>
+        <BottomBar message={message} />
       </SafeAreaView>
     </Swipeable>
   );
