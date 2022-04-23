@@ -19,7 +19,7 @@ const RightSideBar = () => {
       <View style={styles.content}>
         <Text style={styles.header}>Название чата</Text>
         <View style={styles.buttons}>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.svg")}
@@ -27,7 +27,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.svg")}
@@ -35,7 +35,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.svg")}
@@ -43,7 +43,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.svg")}
@@ -55,14 +55,14 @@ const RightSideBar = () => {
         <View>
           <Button
             onPress={() => console.log("invite")}
-            style={styles.inviteBtn}
+
             title="Пригласить участников"
           />
         </View>
         <Text style={styles.users__header}>В сети</Text>
         <View style={styles.users}>
           <View style={styles.user}>
-            <TouchableHighlight onPress={() => {}}>
+            <TouchableHighlight onPress={() => { }}>
               <View>
                 <Image
                   source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
@@ -108,10 +108,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#181A1B",
     flexDirection: "row",
     width: (width * 2) / 3,
-  },
-  inviteBtn: {
-    backgroundColor: "transparent",
-    textAlign: "left",
   },
   content: {
     flex: 1,
