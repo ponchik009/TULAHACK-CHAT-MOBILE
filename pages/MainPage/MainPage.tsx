@@ -8,6 +8,7 @@ import {
   View,
   Image,
   TextInput,
+  ScrollView,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import LeftSideBar from "../../components/SideBar/LeftSideBar";
@@ -73,10 +74,11 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
         </View>
-        <View style={{ flex: 1, backgroundColor: '#303030' }}>
+        <ScrollView style={{ flex: 1, backgroundColor: '#303030' }}>
+          <Message />
           <Message />
 
-        </View>
+        </ScrollView>
         <View style={styles.bottomBar}>
           <TouchableHighlight onPress={() => { }}>
             <View>
