@@ -40,20 +40,22 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
     <Swipeable
       renderLeftActions={LeftSideBar}
       renderRightActions={RightSideBar}
+      overshootLeft={false}
+      overshootRight={false}
     // onSwipeableRightOpen={swipeFromRightOpen}
     // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>
-          <TouchableHighlight onPress={() => { }}>
-            <View>
+          <TouchableHighlight style={styles.appBar__menu} onPress={() => { }}>
+            <View >
               <Image
                 source={require('../../assets/icons/icons8-меню-24.svg')}
                 style={styles.buttonImageIconStyle}
               />
             </View>
           </TouchableHighlight>
-          <Text style={{ flex: 1, color: '#fff', fontWeight: '500' }}>
+          <Text style={styles.chatName}>
             Название чата
           </Text>
           <TouchableHighlight onPress={() => { }}>
@@ -130,14 +132,25 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#262626'
+    backgroundColor: '#262626',
+    padding: 10
+  },
+  appBar__menu: {
+    marginRight: 10
+  },
+
+  chatName: {
+    flex: 1,
+    color: '#fff',
+    fontWeight: '500'
   },
 
   bottomBar: {
     width: '100%',
     flexDirection: 'row',
     backgroundColor: '#303030',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 10
   },
   buttonImageIconStyle: {
     padding: 10,
