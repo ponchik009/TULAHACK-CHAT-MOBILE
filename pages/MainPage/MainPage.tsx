@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   Dimensions,
-  Button,
   View,
   Image,
   TextInput,
@@ -19,22 +18,15 @@ import Message from "../../components/Message";
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
 
-// const swipeFromLeftOpen = () => {
-//   alert("Swipe from left");
-// };
-// const swipeFromRightOpen = () => {
-//   alert("Swipe from right");
-// };
-
 interface IMainProps {
   handleAuthPageOpen: () => void;
 }
 
 const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
   const handleLogOut = () => {
-    // какие-то действия
     handleAuthPageOpen();
   };
+
 
   return (
     <Swipeable
@@ -42,8 +34,6 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
       renderRightActions={RightSideBar}
       overshootLeft={false}
       overshootRight={false}
-    // onSwipeableRightOpen={swipeFromRightOpen}
-    // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>
@@ -124,7 +114,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#181A1B",
     width: width,
     height: height - 100,
   },
@@ -167,6 +157,7 @@ const styles = StyleSheet.create({
     padding: 10,
     lineHeight: 40,
     color: "#fff",
+    backgroundColor: '#161819',
     borderRadius: 20
   },
 });

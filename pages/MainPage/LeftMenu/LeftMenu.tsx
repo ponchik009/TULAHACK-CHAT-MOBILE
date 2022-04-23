@@ -41,7 +41,7 @@ const LeftMenu = () => {
     <View
       style={{
         flexDirection: "row",
-        width: (width * 2) / 2.5,
+
       }}
     >
       <View style={{ backgroundColor: "#1C1E1F" }}>
@@ -54,7 +54,6 @@ const LeftMenu = () => {
       <View
         style={{
           backgroundColor: "#181A1B",
-          flex: 1,
           justifyContent: "center",
           alignItems: "center",
         }}
