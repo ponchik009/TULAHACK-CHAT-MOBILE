@@ -12,6 +12,8 @@ const height = Dimensions.get("window").height; //full height
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
+import CreateChat from "./pages/CreateChat/Index";
+import createChannel from "./pages/CreateChannel/Index";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,10 @@ const App = () => {
         />
         <Stack.Screen name="Profile" component={AuthPage}
           options={{ headerShown: false }} />
+        <Stack.Screen name="CreateChat" component={CreateChat}
+        />
+        <Stack.Screen name="CreateChannel" component={createChannel}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

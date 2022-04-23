@@ -24,9 +24,12 @@ interface IMainProps {
   handleAuthPageOpen: () => void;
 }
 
-const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
+export let navigateKostil: any = undefined
+
+const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
+  navigateKostil = navigation
   const handleLogOut = () => {
-    handleAuthPageOpen();
+
   };
 
   const sideBarRef = React.useRef<Swipeable>(null);
@@ -40,8 +43,6 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
       overshootLeft={false}
       overshootRight={false}
       ref={sideBarRef}
-      // onSwipeableRightOpen={swipeFromRightOpen}
-      // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>
@@ -59,7 +60,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
           <Text style={styles.chatName}>Название чата</Text>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.png")}
@@ -79,7 +80,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/3844442-dot-menu-more-vertical_110310.png")}
@@ -93,7 +94,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
           <Message />
         </ScrollView>
         <View style={styles.bottomBar}>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.png")}
@@ -101,7 +102,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/add_image_icon_215147.png")}
@@ -115,7 +116,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             value={message.value}
             onChangeText={message.onChange}
           />
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/send_90420.png")}
