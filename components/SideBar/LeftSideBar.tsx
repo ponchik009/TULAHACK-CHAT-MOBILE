@@ -3,9 +3,7 @@ import React from "react";
 import LeftMenu from "../../pages/MainPage/LeftMenu/LeftMenu";
 
 const LeftSideBar = () => {
-  return (
-    <LeftMenu />
-  );
+  return <LeftMenu />;
 };
 
 export default LeftSideBar;

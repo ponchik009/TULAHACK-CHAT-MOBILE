@@ -36,7 +36,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
       {isAuth ? (
         <NavigationContainer>
           <Stack.Navigator>
@@ -59,7 +59,7 @@ const App = () => {
           <AuthPage handleMainPageOpen={handleMainPageOpen} />
         </View>
       )}
-    </>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
