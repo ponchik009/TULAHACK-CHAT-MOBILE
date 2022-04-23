@@ -1,7 +1,7 @@
+//@ts-nocheck
 import React from "react";
 import {
     StyleSheet,
-    Text,
     View,
 } from "react-native";
 import { Button, IconButton, TextInput } from "react-native-paper";

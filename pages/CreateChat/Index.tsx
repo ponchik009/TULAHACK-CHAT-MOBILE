@@ -1,16 +1,15 @@
+//@ts-nocheck
 import React from "react";
 import {
-    Button,
+
     StyleSheet,
     Text,
     View,
     Keyboard,
     TouchableOpacity,
-    Picker,
 } from "react-native";
-import {
-    TextInput,
-} from "react-native-gesture-handler";
+import { Button, RadioButton, TextInput } from "react-native-paper";
+
 import { createChat } from "../../api/chat";
 
 const CreateChat = ({ navigation }: any) => {
@@ -23,7 +22,6 @@ const CreateChat = ({ navigation }: any) => {
         } catch (error) {
 
         }
-
     }
     return (
         <TouchableOpacity
@@ -41,21 +39,11 @@ const CreateChat = ({ navigation }: any) => {
                         marginVertical: 5,
                     }}
                 >
-                    <Text style={[styles.text, { fontSize: 20 }]}>Название</Text>
+                    <Text style={[styles.text, { fontSize: 20 }]}>Название чата</Text>
                     <TextInput
-                        placeholder="Название"
-                        style={[
-                            styles.text,
-                            {
-                                fontSize: 20,
-                                borderStyle: "solid",
-                                borderColor: "#115511",
-                                borderWidth: 2,
-                                flexGrow: 1,
-                            },
-                        ]}
+                        label="Название чата"
                         value={name}
-                        onChangeText={setName}
+                        onChangeText={text => setName(text)}
                     />
                 </View>
                 <View
@@ -64,16 +52,14 @@ const CreateChat = ({ navigation }: any) => {
                     }}
                 >
                     <Text style={[styles.text, { fontSize: 20 }]}>Тип чата</Text>
-                    <Picker
-                        selectedValue={chatType}
-                        style={{ flex: 1 }}
-                        onValueChange={(itemValue, itemIndex) => setChatType(itemValue)}
-                    >
-                        <Picker.Item label="Групповой" value="1" />
-                        <Picker.Item label="Информационный" value="2" />
-                    </Picker>
+                    <RadioButton.Group onValueChange={value => setChatType(value)} value={chatType}>
+                        <RadioButton.Item color="#fff" labelStyle={{ color: '#fff' }} label="Групповой" value="1" />
+                        <RadioButton.Item color="#fff" labelStyle={{ color: '#fff' }} label="Информационный" value="2" />
+                    </RadioButton.Group>
                 </View>
-                <Button title="Создать" onPress={handleCreateChat} />
+                <Button mode="contained" color="#333" onPress={handleCreateChat} >
+                    <Text>Создать чат</Text>
+                </Button>
             </View>
         </TouchableOpacity>
     )
