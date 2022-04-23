@@ -4,36 +4,17 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { IChannel } from "../../types/entities";
 
-const ChannelList = () => {
-  const [channels, setChannels] = React.useState<IChannel[]>([
-    {
-      id: 0,
-      name: "name 0",
-      image: require(`../../assets/ls_channel_logo.png`),
-    },
-    {
-      id: 1,
-      name: "name 1",
-      image: require(`../../assets/channel_logo.png`),
-    },
-    {
-      id: 2,
-      name: "name 2",
-      image: require(`../../assets/channel_logo.png`),
-    },
-    {
-      id: 3,
-      name: "name 3",
-      image: require(`../../assets/channel_logo.png`),
-    },
-  ]);
+interface IChannelListProps {
+  channels: IChannel[];
+  activeItem: number;
+  handleClickChannel: (id: number) => void;
+}
 
-  const [activeItem, setActiveItem] = React.useState(1);
-
-  const handleClickChannel = (id: number) => {
-    setActiveItem(id);
-  };
-
+const ChannelList: React.FC<IChannelListProps> = ({
+  channels,
+  activeItem,
+  handleClickChannel,
+}) => {
   const renderItem: ListRenderItem<IChannel> = ({
     item,
   }: {
@@ -45,7 +26,7 @@ const ChannelList = () => {
     >
       <Image
         source={item.image}
-        style={{ borderRadius: 50, width: 71, height: 71 }}
+        style={{ borderRadius: 50, width: 56, height: 56 }}
       />
     </TouchableOpacity>
   );

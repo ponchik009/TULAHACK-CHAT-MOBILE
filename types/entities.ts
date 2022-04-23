@@ -5,3 +5,9 @@ export interface IChannel {
   name: string;
   image: ImageSourcePropType;
 }
+
+export interface IChat {
+  id: number;
+  name: string;
+  image: ImageSourcePropType;
+}
