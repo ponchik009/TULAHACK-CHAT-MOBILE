@@ -1,9 +1,11 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Text, Dimensions } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, Dimensions, Image } from "react-native";
 import { IChannel } from "../../../types/entities";
 import ChatList from "../../../components/Lists/ChatList";
 import ChannelList from "../../../components/Lists/ChannelList";
+import { TouchableHighlight } from "react-native-gesture-handler";
+import { navigateKostil } from "../MainPage";
 
 const width = Dimensions.get("window").width; //full width
 
@@ -38,35 +40,76 @@ const LeftMenu = () => {
   };
 
   return (
-    <View
-      style={{
-        flexDirection: "row",
-
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: "#1C1E1F",
-          justifyContent: "flex-start",
-        }}
-      >
-        <ChannelList
-          channels={channels}
-          activeItem={activeChannel}
-          handleClickChannel={handleClickChannel}
-        />
+    <View style={styles.wrapper}>
+      <View style={styles.columns} >
+        <View style={styles.channels__wrapper}>
+          <ChannelList
+            channels={channels}
+            activeItem={activeChannel}
+            handleClickChannel={handleClickChannel}
+          />
+        </View>
+        <View style={styles.chats__wrapper} >
+          <ChatList channel={channels[activeChannel]} />
+        </View>
       </View>
-      <View
-        style={{
-          backgroundColor: "#181A1B",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ChatList channel={channels[activeChannel]} />
+      <View style={styles.bottomBar}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <TouchableHighlight onPress={() => { }}>
+            <View >
+              <Image
+                source={require("../../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
+                style={styles.myAvatar}
+              />
+            </View>
+          </TouchableHighlight>
+          <Text style={styles.username}>CoolSheff</Text>
+        </View>
+        <TouchableHighlight onPress={() => { navigateKostil.navigate('UserSettings') }}>
+          <View >
+            <Image
+              source={require("../../../assets/icons/gear.png")}
+              style={styles.myAvatar}
+            />
+          </View>
+        </TouchableHighlight>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'column'
+  },
+  columns: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  username: {
+    color: '#fff',
+    marginLeft: 10
+  },
+  channels__wrapper: {
+    backgroundColor: "#1C1E1F",
+    justifyContent: "flex-start",
+  },
+  chats__wrapper: {
+    backgroundColor: "#181A1B",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  bottomBar: {
+    backgroundColor: "#1C1E1F",
+    flexDirection: 'row'
+  },
+  myAvatar: {
+    padding: 10,
+    margin: 5,
+    height: 25,
+    width: 25,
+    resizeMode: "stretch",
+  }
+});
 
 export default LeftMenu;

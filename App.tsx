@@ -21,6 +21,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import CreateChat from "./pages/CreateChat/Index";
 import CreateChannel from "./pages/CreateChannel/Index";
+import UserSettings from "./pages/UserSettings";
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,7 @@ const App = () => {
             />
             <Stack.Screen name="CreateChat" component={CreateChat} />
             <Stack.Screen name="CreateChannel" component={CreateChannel} />
+            <Stack.Screen name="UserSettings" component={UserSettings} />
           </Stack.Navigator>
         </NavigationContainer>
       ) : (
