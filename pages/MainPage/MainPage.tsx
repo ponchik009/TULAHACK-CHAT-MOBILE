@@ -80,8 +80,107 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
         </View>
-        <View style={{ flex: 1, backgroundColor: 'gray' }}>
-
+        <View style={{ flex: 1, backgroundColor: '#303030' }}>
+          <View style={styles.message}>
+            <View>
+              <TouchableHighlight onPress={() => { }}>
+                <View>
+                  <Image
+                    source={require('../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.svg')}
+                    style={styles.buttonImageIconStyle}
+                  />
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.message__content}>
+              <View style={styles.message__meta}>
+                <Text style={styles.message__username}>
+                  luxorylife
+                </Text>
+                <Text style={styles.message__date}>
+                  Вчера, 16:55
+                </Text>
+              </View>
+              <Text style={styles.message__data}>
+                Адаптируем под версию в браузере
+              </Text>
+            </View>
+          </View>
+          <View style={styles.message}>
+            <View>
+              <TouchableHighlight onPress={() => { }}>
+                <View>
+                  <Image
+                    source={require('../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.svg')}
+                    style={styles.buttonImageIconStyle}
+                  />
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.message__content}>
+              <View style={styles.message__meta}>
+                <Text style={styles.message__username}>
+                  luxorylife
+                </Text>
+                <Text style={styles.message__date}>
+                  Вчера, 16:55
+                </Text>
+              </View>
+              <Text style={styles.message__data}>
+                Адаптируем под версию в браузере
+              </Text>
+            </View>
+          </View>
+          <View style={styles.message}>
+            <View>
+              <TouchableHighlight onPress={() => { }}>
+                <View>
+                  <Image
+                    source={require('../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.svg')}
+                    style={styles.buttonImageIconStyle}
+                  />
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.message__content}>
+              <View style={styles.message__meta}>
+                <Text style={styles.message__username}>
+                  luxorylife
+                </Text>
+                <Text style={styles.message__date}>
+                  Вчера, 16:55
+                </Text>
+              </View>
+              <Text style={styles.message__data}>
+                Адаптируем под версию в браузере
+              </Text>
+            </View>
+          </View>
+          <View style={styles.message}>
+            <View>
+              <TouchableHighlight onPress={() => { }}>
+                <View>
+                  <Image
+                    source={require('../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.svg')}
+                    style={styles.buttonImageIconStyle}
+                  />
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.message__content}>
+              <View style={styles.message__meta}>
+                <Text style={styles.message__username}>
+                  luxorylife
+                </Text>
+                <Text style={styles.message__date}>
+                  Вчера, 16:55
+                </Text>
+              </View>
+              <Text style={styles.message__data}>
+                Адаптируем под версию в браузере
+              </Text>
+            </View>
+          </View>
         </View>
         <View style={styles.bottomBar}>
           <TouchableHighlight onPress={() => { }}>
@@ -120,18 +219,49 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#161819",
+    backgroundColor: "#fff",
     width: width,
     height: height - 100,
   },
   appBar: {
     width: '100%',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#262626'
+  },
+  message: {
+    flexDirection: 'row',
+    marginBottom: 10
+  },
+  message__content: {
+    flexDirection: 'column'
+  },
+  message__meta: {
+    flexDirection: 'row',
+    alignItems: "flex-end"
+  },
+  message__userAvatar: {
+    padding: 10,
+    margin: 5,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+  },
+  message__data: {
+    color: "#fff",
+  },
+  message__username: {
+    fontWeight: "700",
+    marginRight: 10,
+    color: "#fff",
+  },
+  message__date: {
+    color: "#777",
   },
   bottomBar: {
     width: '100%',
     flexDirection: 'row',
+    backgroundColor: '#303030',
     alignItems: 'center'
   },
   buttonImageIconStyle: {
