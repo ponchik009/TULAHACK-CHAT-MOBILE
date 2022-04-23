@@ -33,7 +33,6 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
     } catch (error) {
       setIsError(true)
     }
-    //const chats = await getChat(1)
   };
 
   const handleRegister = async (

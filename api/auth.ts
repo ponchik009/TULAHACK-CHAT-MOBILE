@@ -35,12 +35,16 @@ export const register = (
   confirmPassword: string,
 ): Promise<User> => {
   return axios
-    .post('/api/register', {
+    .post<UserAuth>('/api/register', {
       login,
       password,
       confirmPassword,
     })
     .then((data) => {
       return data.data;
+    })
+    .then(async (userAuth) => {
+      setToken(userAuth.token);
+      return userAuth;
     });
 };
