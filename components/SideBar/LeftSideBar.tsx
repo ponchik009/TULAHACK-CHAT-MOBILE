@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { SafeAreaView, StyleSheet, View, Text, Dimensions } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+
+import ChannelList from "../Lists/ChannelList";
 
 const width = Dimensions.get("window").width; //full width
 
@@ -15,7 +15,7 @@ const LeftSideBar = () => {
       }}
     >
       <View style={{ backgroundColor: "#1C1E1F" }}>
-        <Text>Список каналов</Text>
+        <ChannelList />
       </View>
       <View style={{ backgroundColor: "#181A1B", flex: 1 }}>
         <Text>Список чатоsdfsggdgegв</Text>
