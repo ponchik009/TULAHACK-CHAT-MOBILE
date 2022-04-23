@@ -12,7 +12,7 @@ import { StatusBar } from "expo-status-bar";
 
 import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
-import { NativeBaseProvider } from "native-base";
+import { GlobalProvider } from './state/GlobalProvider';
 
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
@@ -37,6 +37,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
+      {/* <GlobalProvider> */}
       {isAuth ? (
         <NavigationContainer>
           <Stack.Navigator>
@@ -59,6 +60,7 @@ const App = () => {
           <AuthPage handleMainPageOpen={handleMainPageOpen} />
         </View>
       )}
+      {/* </GlobalProvider> */}
     </SafeAreaView>
   );
 };

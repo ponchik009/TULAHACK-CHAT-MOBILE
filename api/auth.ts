@@ -2,6 +2,7 @@ import axios from './axios';
 import * as SecureStore from 'expo-secure-store';
 import User from '../types/User';
 import { Platform } from 'react-native';
+import { setToken } from './token';
 
 interface UserAuth extends User {
   token: string;
@@ -17,12 +18,7 @@ export const loginAuth = (login: string, password: string): Promise<User> => {
       return data.data;
     })
     .then(async (userAuth) => {
-      console.log(userAuth);
-      if (Platform.OS == 'web') {
-        localStorage.setItem('token', userAuth.token);
-      } else if (Platform.OS == 'android' || Platform.OS == 'ios') {
-        await SecureStore.setItemAsync('token', userAuth.token);
-      }
+      setToken(userAuth.token);
       return userAuth;
     });
 };

@@ -4,6 +4,7 @@ import { loginAuth } from "../../api/auth";
 import { getChat } from "../../api/chat";
 import LoginBox from "../../components/AuthBox/LoginBox";
 import RegisterBox from "../../components/AuthBox/RegisterBox";
+import { GlobalContext } from "../../state/GlobalProvider";
 import { styles } from "./styles";
 
 interface IAuthProps {
@@ -13,6 +14,7 @@ interface IAuthProps {
 const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
   const [isLoginBox, setIsLoginBox] = React.useState(true);
 
+
   const handleRegiserOpen = () => {
     setIsLoginBox(false);
   };
@@ -21,16 +23,12 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
   };
 
   const handleLogIn = async (login: string, password: string) => {
-    // какие-то действия
-    console.log(login, password);
+    const userData = await loginAuth(login, password)
 
-    const auth = await loginAuth(login, password)
-    const a = await getChat(1)
+    const chats = await getChat(1)
+    console.log(chats);
 
-    console.log(auth);
-    console.log(a);
-
-    // handleMainPageOpen();
+    handleMainPageOpen();
   };
 
   const handleRegister = (
