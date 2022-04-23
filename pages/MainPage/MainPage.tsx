@@ -5,10 +5,10 @@ import {
   StyleSheet,
   Text,
   Dimensions,
-  Button,
   View,
   Image,
   TextInput,
+  ScrollView,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import LeftSideBar from "../../components/SideBar/LeftSideBar";
@@ -19,20 +19,12 @@ import Message from "../../components/Message";
 const width = Dimensions.get("window").width; //full width
 const height = Dimensions.get("window").height; //full height
 
-// const swipeFromLeftOpen = () => {
-//   alert("Swipe from left");
-// };
-// const swipeFromRightOpen = () => {
-//   alert("Swipe from right");
-// };
-
 interface IMainProps {
   handleAuthPageOpen: () => void;
 }
 
 const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
   const handleLogOut = () => {
-    // какие-то действия
     handleAuthPageOpen();
   };
 
@@ -89,9 +81,10 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
         </View>
-        <View style={{ flex: 1, backgroundColor: "#303030" }}>
+        <ScrollView style={{ flex: 1, backgroundColor: "#303030" }}>
           <Message />
-        </View>
+          <Message />
+        </ScrollView>
         <View style={styles.bottomBar}>
           <TouchableHighlight onPress={() => {}}>
             <View>
@@ -125,7 +118,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#181A1B",
     width: width,
     height: height - 100,
   },
@@ -167,6 +160,7 @@ const styles = StyleSheet.create({
     padding: 10,
     lineHeight: 40,
     color: "#fff",
+    backgroundColor: "#161819",
     borderRadius: 20,
   },
 });
