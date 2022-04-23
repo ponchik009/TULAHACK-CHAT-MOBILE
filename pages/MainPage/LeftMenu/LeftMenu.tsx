@@ -36,6 +36,9 @@ const LeftMenu = () => {
   const handleClickChannel = (id: number) => {
     setActiveChannel(id);
   };
+  const handleClickUserSettings = () => {
+    navigateKostil.navigate('UserSettings')
+  }
 
   return (
     <View style={styles.wrapper}>
@@ -63,7 +66,7 @@ const LeftMenu = () => {
           </TouchableHighlight>
           <Text style={styles.username}>CoolSheff</Text>
         </View>
-        <TouchableHighlight onPress={() => { navigateKostil.navigate('UserSettings') }}>
+        <TouchableHighlight onPress={handleClickUserSettings}>
           <View >
             <Image
               source={require("../../../assets/icons/gear.png")}

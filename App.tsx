@@ -22,6 +22,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import CreateChat from "./pages/CreateChat/Index";
 import CreateChannel from "./pages/CreateChannel/Index";
 import UserSettings from "./pages/UserSettings";
+import InviteUsers from "./pages/InviteUsers";
+import FindChannel from "./pages/FindChannel";
 
 const Stack = createStackNavigator();
 
@@ -51,6 +53,8 @@ const App = () => {
             />
             <Stack.Screen name="CreateChat" component={CreateChat} />
             <Stack.Screen name="CreateChannel" component={CreateChannel} />
+            <Stack.Screen name="FindChannel" component={FindChannel} />
+            <Stack.Screen name="InviteUsers" component={InviteUsers} />
             <Stack.Screen name="UserSettings"  >
               {props => <UserSettings {...props} setIsAuth={setIsAuth} />}
             </Stack.Screen>

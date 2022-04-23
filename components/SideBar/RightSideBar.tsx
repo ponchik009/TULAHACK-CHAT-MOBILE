@@ -1,25 +1,26 @@
 import "react-native-gesture-handler";
 import React from "react";
 import {
-  SafeAreaView,
   StyleSheet,
   View,
   Text,
-  Dimensions,
   TouchableHighlight,
   Image,
   Button,
 } from "react-native";
+import { navigateKostil } from "../../pages/MainPage/MainPage";
 
-const width = Dimensions.get("window").width; //full width
 
 const RightSideBar = () => {
+  const handleInviteUsers = () => {
+    navigateKostil.navigate('InviteUsers')
+  }
   return (
     <View style={styles.constainer}>
       <View style={styles.content}>
         <Text style={styles.header}>Название чата</Text>
         <View style={styles.buttons}>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.png")}
@@ -27,7 +28,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.png")}
@@ -35,7 +36,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.png")}
@@ -43,7 +44,7 @@ const RightSideBar = () => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.png")}
@@ -54,14 +55,14 @@ const RightSideBar = () => {
         </View>
         <View>
           <Button
-            onPress={() => console.log("invite")}
+            onPress={handleInviteUsers}
             title="Пригласить участников"
           />
         </View>
         <Text style={styles.users__header}>В сети</Text>
         <View style={styles.users}>
           <View style={styles.user}>
-            <TouchableHighlight onPress={() => {}}>
+            <TouchableHighlight onPress={() => { }}>
               <View>
                 <Image
                   source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}

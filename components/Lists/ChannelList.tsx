@@ -42,6 +42,15 @@ const ChannelList: React.FC<IChannelListProps> = ({
     </TouchableOpacity>
   );
   const [modalVisible, setModalVisible] = React.useState(false);
+
+  const handleClickCreateChannel = () => {
+    navigateKostil.navigate('CreateChannel')
+    setModalVisible(false)
+  }
+  const handleClickFindChannel = () => {
+    navigateKostil.navigate('FindChannel')
+    setModalVisible(false)
+  }
   return (
     <>
       <FlatList
@@ -63,14 +72,14 @@ const ChannelList: React.FC<IChannelListProps> = ({
           <View style={styles.modalView}>
             <Pressable
               style={[styles.button]}
-              onPress={() => { navigateKostil.navigate('CreateChannel'); setModalVisible(!modalVisible) }}
+              onPress={handleClickCreateChannel}
             >
               <Text style={styles.textStyle}>Создать канал</Text>
             </Pressable>
 
             <Pressable
               style={[styles.button]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={handleClickFindChannel}
             >
               <Text style={styles.textStyle}>Присоединиться к каналу</Text>
             </Pressable>
