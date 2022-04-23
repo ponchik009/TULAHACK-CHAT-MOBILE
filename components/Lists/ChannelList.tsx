@@ -8,6 +8,7 @@ import {
   Text,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { navigateKostil } from "../../pages/MainPage/MainPage";
 
 import { IChannel } from "../../types/entities";
 
@@ -57,6 +58,7 @@ const ChannelList: React.FC<IChannelListProps> = ({
           marginBottom: 10,
           marginLeft: 5,
         }}
+        onPress={() => navigateKostil.navigate('CreateChannel')}
       >
         <Text style={{ fontSize: 40, color: "#fff" }}>+</Text>
       </TouchableOpacity>

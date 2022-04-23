@@ -8,6 +8,7 @@ import {
   Text,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { navigateKostil } from "../../pages/MainPage/MainPage";
 
 import { IChannel, IChat } from "../../types/entities";
 
@@ -81,6 +82,7 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
           alignItems: "center",
           justifyContent: "center",
         }}
+        onPress={() => navigateKostil.navigate('CreateChat')}
       >
         <View
           style={{

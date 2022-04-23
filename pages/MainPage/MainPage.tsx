@@ -26,12 +26,13 @@ interface IMainProps {
   handleAuthPageOpen: () => void;
 }
 
+export let navigateKostil: any = undefined;
+
 const styles = createStyles(width, height);
 
-const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
-  const handleLogOut = () => {
-    handleAuthPageOpen();
-  };
+const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
+  navigateKostil = navigation;
+  const handleLogOut = () => {};
 
   const sideBarRef = React.useRef<Swipeable>(null);
 
@@ -44,8 +45,6 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
       overshootLeft={false}
       overshootRight={false}
       ref={sideBarRef}
-      // onSwipeableRightOpen={swipeFromRightOpen}
-      // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>

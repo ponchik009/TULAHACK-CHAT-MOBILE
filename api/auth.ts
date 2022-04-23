@@ -1,4 +1,5 @@
 import axios from './axios';
+import * as SecureStore from 'expo-secure-store';
 
 export const loginAuth = (login: string, password: string) => {
   return axios
@@ -8,6 +9,10 @@ export const loginAuth = (login: string, password: string) => {
     })
     .then((data) => {
       return data.data;
+    })
+    .then(async (token) => {
+      await SecureStore.setItemAsync('token', token);
+      localStorage.setItem('token', token);
     });
 };
 
