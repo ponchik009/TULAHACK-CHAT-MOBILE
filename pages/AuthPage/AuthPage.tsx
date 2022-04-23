@@ -22,13 +22,15 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
 
   const handleLogIn = async (login: string, password: string) => {
     // какие-то действия
-    // const auth = await loginAuth(login, password)
-    // const a = await getChat(1)
+    console.log(login, password);
 
-    // console.log(auth);
-    // console.log(a);
+    const auth = await loginAuth(login, password)
+    const a = await getChat(1)
 
-    handleMainPageOpen();
+    console.log(auth);
+    console.log(a);
+
+    // handleMainPageOpen();
   };
 
   const handleRegister = (

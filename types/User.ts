@@ -1,5 +1,8 @@
 export default interface User {
+  about: string;
   login: string;
-  avatarPath: string;
+  avatar: {
+    path: string;
+  };
   name: string;
 }
