@@ -10,7 +10,7 @@ const Message: React.FC = () => {
         <TouchableHighlight onPress={() => {}}>
           <View>
             <Image
-              source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.svg")}
+              source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
               style={styles.buttonImageIconStyle}
             />
           </View>
