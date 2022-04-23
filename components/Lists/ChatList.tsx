@@ -94,9 +94,9 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
             marginLeft: 5,
           }}
         >
-          <Text style={{ fontSize: 40, color: "#fff" }}>+</Text>
+          <Text style={{ lineHeight: 56, fontSize: 40, color: "#fff", alignItems: 'center', }}>+</Text>
         </View>
-        <Text style={{ fontSize: 25, color: "#fff", marginLeft: 10 }}>
+        <Text style={{ fontSize: 25, color: "#fff", marginLeft: 10, alignItems: 'center' }}>
           Создать чат
         </Text>
       </TouchableOpacity>
