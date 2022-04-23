@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
   constainer: {
     backgroundColor: "#181A1B",
     flexDirection: "row",
-    width: (width * 2) / 3,
   },
   content: {
     flex: 1,

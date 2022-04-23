@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axios';
 import User from '../types/User';
 
 export const getUser = (userId: number): Promise<User> => {

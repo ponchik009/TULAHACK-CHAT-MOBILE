@@ -1,5 +1,7 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
+import { loginAuth } from "../../api/auth";
+import { getChat } from "../../api/chat";
 import LoginBox from "../../components/AuthBox/LoginBox";
 import RegisterBox from "../../components/AuthBox/RegisterBox";
 import { styles } from "./styles";
@@ -18,8 +20,15 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
     setIsLoginBox(true);
   };
 
-  const handleLogIn = (login: string, password: string) => {
+  const handleLogIn = async (login: string, password: string) => {
     // какие-то действия
+    const auth = await loginAuth(login, password)
+    const a = await getChat(1)
+
+    console.log(auth);
+    console.log(a);
+
+
     handleMainPageOpen();
   };
 
