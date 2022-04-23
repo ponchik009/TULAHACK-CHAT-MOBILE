@@ -1,83 +1,54 @@
-
+import "react-native-gesture-handler";
 import React from "react";
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import { SafeAreaView, StyleSheet, View, Text, Dimensions } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+import LeftSideBar from "./components/SideBar/LeftSideBar";
+import RightSideBar from "./components/SideBar/RightSideBar";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import MainPage from "./pages/MainPage/MainPage";
 
-function Feed({ navigation }: any) {
+const width = Dimensions.get("window").width; //full width
+const height = Dimensions.get("window").height; //full height
+
+// const swipeFromLeftOpen = () => {
+//   alert("Swipe from left");
+// };
+// const swipeFromRightOpen = () => {
+//   alert("Swipe from right");
+// };
+
+const App = () => {
+  const [isAuth, setIsAuth] = React.useState(false);
+
+  // зарефакторить в отдельный хук?
+  const handleAuthPageOpen = () => {
+    setIsAuth(false);
+  };
+  const handleMainPageOpen = () => {
+    setIsAuth(true);
+  };
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Feed Screen</Text>
-      <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
-      <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
-    </View>
+    <>
+      <StatusBar style="auto" />
+      <SafeAreaView style={styles.wrapper}>
+        {isAuth ? (
+          <MainPage handleAuthPageOpen={handleAuthPageOpen} />
+        ) : (
+          <AuthPage handleMainPageOpen={handleMainPageOpen} />
+        )}
+      </SafeAreaView>
+    </>
   );
-}
-
-function Notifications() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Notifications Screen</Text>
-    </View>
-  );
-}
-
-
-function CustomDrawerContent(props: any) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label="Close drawer"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="Toggle drawer"
-        onPress={() => props.navigation.toggleDrawer()}
-      />
-    </DrawerContentScrollView>
-  );
-}
-
-const Drawer = createDrawerNavigator();
-
-function MyDrawer() {
-  return (
-    <Drawer.Navigator
-      useLegacyImplementation
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
-    >
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Notifications" component={Notifications} />
-    </Drawer.Navigator>
-  );
-}
-
-function MyDrawerRight() {
-  return (
-    <Drawer.Navigator
-      useLegacyImplementation
-      drawerContent={(props) => <CustomDrawerContent {...props}
-        drawerPosition="right" />
-      }
-    >
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Notifications" component={Notifications} />
-    </Drawer.Navigator>
-  );
-}
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      {/* <MyDrawer /> */}
-      <MyDrawerRight />
-    </NavigationContainer>
-  );
-}
-
+};
+const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: "#161819",
+    justifyContent: "center",
+    alignItems: "center",
+    width,
+    height,
+  },
+});
+export default App;
