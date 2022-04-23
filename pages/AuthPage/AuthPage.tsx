@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
-import { loginAuth } from "../../api/auth";
+import { loginAuth, register } from "../../api/auth";
 import { getChat } from "../../api/chat";
 import LoginBox from "../../components/AuthBox/LoginBox";
 import RegisterBox from "../../components/AuthBox/RegisterBox";
@@ -13,31 +13,41 @@ interface IAuthProps {
 
 const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
   const [isLoginBox, setIsLoginBox] = React.useState(true);
-
+  const [isError, setIsError] = React.useState(false)
 
   const handleRegiserOpen = () => {
+    setIsError(false)
     setIsLoginBox(false);
   };
   const handleLogInOpen = () => {
+    setIsError(false)
     setIsLoginBox(true);
   };
 
   const handleLogIn = async (login: string, password: string) => {
-    const userData = await loginAuth(login, password)
+    try {
+      console.log('as');
 
-    const chats = await getChat(1)
-    console.log(chats);
-
-    handleMainPageOpen();
+      const userData = await loginAuth(login, password)
+      handleMainPageOpen();
+    } catch (error) {
+      setIsError(true)
+    }
+    //const chats = await getChat(1)
   };
 
-  const handleRegister = (
+  const handleRegister = async (
     login: string,
     password: string,
     confirmPassword: string
   ) => {
-    // какие-то действия
-    handleMainPageOpen();
+    try {
+      const userData = await register(login, password, confirmPassword)
+      handleMainPageOpen();
+    } catch (error) {
+      setIsError(true)
+    }
+
   };
 
   return (
@@ -47,6 +57,7 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
         <Text style={styles.logoText}>Chat</Text>
       </View>
       <View style={styles.main}>
+        {isError && <Text style={styles.error}>{isLoginBox ? 'Ошибка авторизации' : 'Ошибка регистрации'}</Text>}
         {isLoginBox ? (
           <LoginBox
             handleChangePress={handleRegiserOpen}

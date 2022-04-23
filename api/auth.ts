@@ -29,8 +29,18 @@ export const logout = () => {
   });
 };
 
-export const register = () => {
-  return axios.get('').then((data) => {
-    return data.data;
-  });
+export const register = (
+  login: string,
+  password: string,
+  confirmPassword: string,
+): Promise<User> => {
+  return axios
+    .post('/api/register', {
+      login,
+      password,
+      confirmPassword,
+    })
+    .then((data) => {
+      return data.data;
+    });
 };
