@@ -3,10 +3,8 @@ import React from "react";
 import {
     StyleSheet,
     View,
-    Image,
     TextInput,
 } from "react-native";
-import { TouchableHighlight } from "react-native-gesture-handler";
 import { Colors, IconButton } from "react-native-paper";
 
 export interface BottomBarProps {
