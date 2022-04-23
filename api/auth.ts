@@ -31,14 +31,18 @@ export const logout = () => {
 
 export const register = (
   login: string,
+  username: string,
+  aboutMe: string,
   password: string,
   confirmPassword: string,
 ): Promise<User> => {
   return axios
     .post<UserAuth>('/api/register', {
       login,
+      name: username,
+      about: aboutMe,
       password,
-      confirmPassword,
+      //confirmPassword,
     })
     .then((data) => {
       return data.data;

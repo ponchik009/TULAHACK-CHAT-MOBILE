@@ -37,11 +37,13 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
 
   const handleRegister = async (
     login: string,
+    username: string,
+    aboutMe: string,
     password: string,
     confirmPassword: string
   ) => {
     try {
-      const userData = await register(login, password, confirmPassword)
+      const userData = await register(login, username, aboutMe, password, confirmPassword)
       handleMainPageOpen();
     } catch (error) {
       setIsError(true)

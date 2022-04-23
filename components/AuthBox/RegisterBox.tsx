@@ -7,6 +7,8 @@ interface IRegisterBoxProps {
   handleChangePress: () => void;
   handleRegisterPress: (
     login: string,
+    username: string,
+    aboutMe: string,
     password: string,
     confirmPassword: string
   ) => void;
@@ -19,6 +21,8 @@ const RegisterBox: React.FC<IRegisterBoxProps> = ({
   const login = useInput("");
   const password = useInput("");
   const confirmPassword = useInput("");
+  const username = useInput("");
+  const aboutMe = useInput("");
 
   return (
     <>
@@ -29,6 +33,20 @@ const RegisterBox: React.FC<IRegisterBoxProps> = ({
         textContentType="nickname"
         value={login.value}
         onChangeText={login.onChange}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Имя"
+        textContentType="name"
+        value={username.value}
+        onChangeText={username.onChange}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="О себе"
+        textContentType="none"
+        value={aboutMe.value}
+        onChangeText={aboutMe.onChange}
       />
       <TextInput
         style={styles.input}
@@ -51,6 +69,8 @@ const RegisterBox: React.FC<IRegisterBoxProps> = ({
         onPress={() =>
           handleRegisterPress(
             login.value,
+            username.value,
+            aboutMe.value,
             password.value,
             confirmPassword.value
           )
