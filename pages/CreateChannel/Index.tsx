@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -8,11 +7,10 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-import {
-  TextInput,
-} from "react-native-gesture-handler";
+
 import * as ImagePicker from "expo-image-picker";
 import { createChannel } from "../../api/channel";
+import { Button, TextInput } from "react-native-paper";
 
 const CreateChannel = ({ navigation }: any) => {
   const [image, setImage] = React.useState<string | null>(null);
@@ -68,19 +66,9 @@ const CreateChannel = ({ navigation }: any) => {
         >
           <Text style={[styles.text, { fontSize: 20 }]}>Название</Text>
           <TextInput
-            placeholder="Название"
-            style={[
-              styles.text,
-              {
-                fontSize: 20,
-                borderStyle: "solid",
-                borderColor: "#115511",
-                borderWidth: 2,
-                flexGrow: 1,
-              },
-            ]}
+            label="Название"
             value={name}
-            onChangeText={setName}
+            onChangeText={text => setName(text)}
           />
         </View>
         <View
@@ -90,23 +78,14 @@ const CreateChannel = ({ navigation }: any) => {
         >
           <Text style={[styles.text, { fontSize: 20 }]}>Описание</Text>
           <TextInput
-            placeholder="Описание"
-            multiline
-            style={[
-              styles.text,
-              {
-                fontSize: 20,
-                borderStyle: "solid",
-                borderColor: "#115511",
-                borderWidth: 2,
-                flexGrow: 1,
-              },
-            ]}
+            label="Описание"
             value={about}
-            onChangeText={setAbout}
+            onChangeText={text => setAbout(text)}
           />
         </View>
-        <Button title="Создать" onPress={handleSubmit} />
+        <Button mode="contained" color="#333" onPress={handleSubmit} >
+          <Text>Создать канал</Text>
+        </Button>
       </View>
     </TouchableOpacity>
   );

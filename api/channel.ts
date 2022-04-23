@@ -29,3 +29,7 @@ export const createChannel = async (name: string, about: string, file: any) => {
       return data.data;
     });
 };
+
+export const findChannel = async (searchName: string): Promise<Channel[]> => {
+  return axios.get<Channel[]>('/api/channel/search/' + searchName).then((data) => data.data);
+};
