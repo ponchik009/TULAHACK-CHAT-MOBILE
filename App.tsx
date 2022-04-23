@@ -25,7 +25,7 @@ import CreateChannel from "./pages/CreateChannel/Index";
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [isAuth, setIsAuth] = React.useState(false);
+  const [isAuth, setIsAuth] = React.useState(true);
 
   // зарефакторить в отдельный хук?
   const handleAuthPageOpen = () => {

@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import LeftSideBar from "../../components/SideBar/LeftSideBar";
 import RightSideBar from "../../components/SideBar/RightSideBar";
@@ -18,10 +18,9 @@ export let navigateKostil: any = undefined;
 
 const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
   navigateKostil = navigation;
-  const handleLogOut = () => {};
+  const handleLogOut = () => { };
 
   const sideBarRef = React.useRef<Swipeable>(null);
-
   const message = useInput("");
 
   return (
