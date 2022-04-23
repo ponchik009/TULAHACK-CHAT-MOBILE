@@ -83,7 +83,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
         <View style={{ flex: 1, backgroundColor: 'gray' }}>
 
         </View>
-        <View style={styles.appBar}>
+        <View style={styles.bottomBar}>
           <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
@@ -104,6 +104,14 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             placeholder="Написать"
             style={styles.input}
           />
+          <TouchableHighlight onPress={() => { }}>
+            <View>
+              <Image
+                source={require('../../assets/icons/-send_90420.svg')}
+                style={styles.buttonImageIconStyle}
+              />
+            </View>
+          </TouchableHighlight>
         </View>
 
       </SafeAreaView>
@@ -121,6 +129,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+  bottomBar: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   buttonImageIconStyle: {
     padding: 10,
     margin: 5,
@@ -134,6 +147,9 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    lineHeight: 40,
+    color: "#fff",
+    borderRadius: 20
   },
 });
 export default MainPage;
