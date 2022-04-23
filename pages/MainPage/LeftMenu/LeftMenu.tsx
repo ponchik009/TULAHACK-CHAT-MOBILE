@@ -1,13 +1,11 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Text, Dimensions, Image } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { IChannel } from "../../../types/entities";
 import ChatList from "../../../components/Lists/ChatList";
 import ChannelList from "../../../components/Lists/ChannelList";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { navigateKostil } from "../MainPage";
-
-const width = Dimensions.get("window").width; //full width
 
 const LeftMenu = () => {
   const [channels, setChannels] = React.useState<IChannel[]>([

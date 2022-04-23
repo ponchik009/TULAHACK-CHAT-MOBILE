@@ -27,11 +27,8 @@ const Stack = createStackNavigator();
 
 const App = () => {
   const [isAuth, setIsAuth] = React.useState(true);
+  console.log(setIsAuth);
 
-  // зарефакторить в отдельный хук?
-  const handleAuthPageOpen = () => {
-    setIsAuth(false);
-  };
   const handleMainPageOpen = () => {
     setIsAuth(true);
   };
@@ -54,7 +51,9 @@ const App = () => {
             />
             <Stack.Screen name="CreateChat" component={CreateChat} />
             <Stack.Screen name="CreateChannel" component={CreateChannel} />
-            <Stack.Screen name="UserSettings" component={UserSettings} />
+            <Stack.Screen name="UserSettings"  >
+              {props => <UserSettings {...props} setIsAuth={setIsAuth} />}
+            </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
       ) : (

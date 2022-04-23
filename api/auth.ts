@@ -2,7 +2,7 @@ import axios from './axios';
 import * as SecureStore from 'expo-secure-store';
 import User from '../types/User';
 import { Platform } from 'react-native';
-import { setToken } from './token';
+import { removeToken, setToken } from './token';
 
 interface UserAuth extends User {
   token: string;
@@ -25,6 +25,7 @@ export const loginAuth = (login: string, password: string): Promise<User> => {
 
 export const logout = () => {
   return axios.get('').then((data) => {
+    removeToken();
     return data.data;
   });
 };
