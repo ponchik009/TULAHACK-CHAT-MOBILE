@@ -37,8 +37,8 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
       overshootLeft={false}
       overshootRight={false}
       ref={sideBarRef}
-      // onSwipeableRightOpen={swipeFromRightOpen}
-      // onSwipeableLeftOpen={swipeFromLeftOpen}
+    // onSwipeableRightOpen={swipeFromRightOpen}
+    // onSwipeableLeftOpen={swipeFromLeftOpen}
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.appBar}>
@@ -56,7 +56,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
           <Text style={styles.chatName}>Название чата</Text>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/icons8-поиск.svg")}
@@ -64,7 +64,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { sideBarRef.current?.openRight() }}>
             <View>
               <Image
                 source={require("../../assets/icons/group-profile-users_icon-icons.com_73540.svg")}
@@ -72,7 +72,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/3844442-dot-menu-more-vertical_110310.svg")}
@@ -86,7 +86,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
           <Message />
         </ScrollView>
         <View style={styles.bottomBar}>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/photo-camera-black-tool_icon-icons.com_72960.svg")}
@@ -94,7 +94,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/add_image_icon_215147.svg")}
@@ -103,7 +103,7 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
             </View>
           </TouchableHighlight>
           <TextInput placeholder="Написать" style={styles.input} />
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => { }}>
             <View>
               <Image
                 source={require("../../assets/icons/-send_90420.svg")}
