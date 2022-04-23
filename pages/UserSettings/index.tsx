@@ -1,8 +1,22 @@
-import { Image, StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Button, Colors, IconButton } from "react-native-paper";
 import { logout } from "../../api/auth";
+import * as ImagePicker from "expo-image-picker";
+import React from "react";
 const UserSettings = ({ setIsAuth }: any) => {
+    const [image, setImage] = React.useState<string | null>(null);
+    const pickAvatar = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
 
-
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
 
     const handleLogout = async () => {
         try {
@@ -16,9 +30,11 @@ const UserSettings = ({ setIsAuth }: any) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.header}>
-                <Image
-                    source={require("../../assets/icons/round-account-button-with-user-inside_icon-icons.com_72596.png")}
-                    style={styles.myAvatar}
+                <IconButton
+                    icon="account-circle"
+                    color={Colors.white}
+                    size={120}
+                    onPress={() => pickAvatar()}
                 />
                 <Text style={styles.username}>
                     CoolSheff
@@ -28,15 +44,9 @@ const UserSettings = ({ setIsAuth }: any) => {
                 <Text style={styles.title}>
                     Настройки пользователя
                 </Text>
-                <TouchableHighlight onPress={handleLogout}>
-                    <View style={styles.iconBtn}>
-                        <Image
-                            source={require("../../assets/icons/exit.png")}
-                            style={styles.btnIcon}
-                        />
-                        <Text style={styles.iconBtn__text}>Выйти</Text>
-                    </View>
-                </TouchableHighlight>
+                <Button icon="exit-to-app" mode="text" contentStyle={styles.btn} style={styles.btn} color="white" onPress={() => handleLogout()}>
+                    Выйти
+                </Button>
             </View>
         </View>
     )
@@ -51,6 +61,11 @@ const styles = StyleSheet.create({
     container: {
         paddingLeft: 10,
         paddingRight: 10,
+    },
+    btn: {
+        fontSize: 100,
+        alignSelf: 'stretch',
+
     },
     title: {
         color: '#fff',

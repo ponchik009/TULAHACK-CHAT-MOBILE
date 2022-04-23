@@ -79,7 +79,6 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
       <Button icon="plus-circle" mode="text" contentStyle={styles.btn} style={styles.btn} color="white" onPress={() => navigateKostil.navigate('CreateChat')}>
         Создать чат
       </Button>
-
     </>
   );
 };
