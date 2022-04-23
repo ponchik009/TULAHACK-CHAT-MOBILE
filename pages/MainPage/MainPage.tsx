@@ -67,7 +67,11 @@ const MainPage: React.FC<IMainProps> = ({ handleAuthPageOpen }) => {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight
+            onPress={() => {
+              sideBarRef.current?.openRight();
+            }}
+          >
             <View>
               <Image
                 source={require("../../assets/icons/group-profile-users_icon-icons.com_73540.svg")}
