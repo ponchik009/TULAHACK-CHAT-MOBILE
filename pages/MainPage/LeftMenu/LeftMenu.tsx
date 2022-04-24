@@ -8,7 +8,7 @@ import { Colors, IconButton } from "react-native-paper";
 import { getChannels } from "../../../api/channel";
 import Channel from "../../../types/Channel";
 import Chat from "../../../types/Chat";
-import { getChatsInChannel } from "../../../api/chat";
+import { getChatsInChannel, getPersonalChats } from "../../../api/chat";
 
 const LeftMenu = () => {
   const [channels, setChannels] = React.useState<Channel[]>([]);
@@ -23,12 +23,17 @@ const LeftMenu = () => {
     })
   }, [])
 
-  const handleClickChannel = async (selectedChannel: Channel) => {
+  const handleClickChannel = async (selectedChannel: Channel | null) => {
     setSelectedChannel(selectedChannel);
-    const chatsInSelectedChannel = await getChatsInChannel(selectedChannel.id)
-    console.log(chatsInSelectedChannel);
-
-    setChats(chatsInSelectedChannel)
+    if (selectedChannel) {
+      const chatsInSelectedChannel = await getChatsInChannel(selectedChannel.id)
+      console.log(chatsInSelectedChannel);
+      setChats(chatsInSelectedChannel)
+    } else {
+      const personalChats = await getPersonalChats()
+      console.log(personalChats);
+      setChats(personalChats)
+    }
   };
 
   const handleClickUserSettings = () => {
@@ -47,8 +52,7 @@ const LeftMenu = () => {
         </View>
         <View style={styles.chats__wrapper} >
           {
-            selectedChannel &&
-            <ChatList channel={selectedChannel} chats={chats} />
+            <ChatList chats={chats} />
           }
         </View>
       </View>

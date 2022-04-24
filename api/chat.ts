@@ -11,6 +11,15 @@ export const getChatsInChannel = async (channelId: string): Promise<Chat[]> => {
     })
     .then((data) => data.data);
 };
+export const getPersonalChats = async (): Promise<Chat[]> => {
+  return axios
+    .get<Chat[]>(`api/chats/private`, {
+      headers: {
+        Authorization: 'Bearer ' + (await getToken()),
+      },
+    })
+    .then((data) => data.data);
+};
 
 export const getChat = async (chatId: number): Promise<Chat> => {
   return axios

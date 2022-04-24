@@ -14,7 +14,7 @@ import Channel from "../../types/Channel";
 interface IChannelListProps {
   channels: Channel[];
   selectedChannel: Channel | null;
-  handleClickChannel: (selectedChannel: Channel) => void;
+  handleClickChannel: (selectedChannel: Channel | null) => void;
 }
 
 const ChannelList: React.FC<IChannelListProps> = ({
@@ -22,26 +22,20 @@ const ChannelList: React.FC<IChannelListProps> = ({
   selectedChannel,
   handleClickChannel,
 }) => {
+
   const renderItem: ListRenderItem<Channel> = ({
     item,
   }: {
     item: Channel;
-  }) => (
-    <TouchableOpacity
-      style={[selectedChannel?.id === item.id && styles.selectedChannel, styles.channel]}
-      onPress={() => handleClickChannel(item)}
-    >
-      <IconButton
-        icon="camera"
-        color={Colors.white}
-        size={20}
-        onPress={() => { }}
-      />
-
-    </TouchableOpacity>
+  }) => (<IconButton
+    icon="camera"
+    style={[selectedChannel?.id === item.id && styles.selectedChannel, styles.channel]}
+    color={Colors.white}
+    size={50}
+    onPress={() => { handleClickChannel(item) }}
+  />
   );
   const [visible, setVisible] = React.useState(false);
-
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
@@ -53,8 +47,16 @@ const ChannelList: React.FC<IChannelListProps> = ({
     navigateKostil.navigate('FindChannel')
     hideModal()
   }
+
   return (
     <>
+      <IconButton
+        icon="camera-account"
+        style={[!selectedChannel && styles.selectedChannel, styles.channel]}
+        color={Colors.white}
+        size={50}
+        onPress={() => { handleClickChannel(null) }}
+      />
       <FlatList
         data={channels}
         keyExtractor={(channel) => String(channel.id)}

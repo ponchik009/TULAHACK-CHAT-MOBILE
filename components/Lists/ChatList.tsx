@@ -13,13 +13,10 @@ import Channel from "../../types/Channel";
 import Chat from "../../types/Chat";
 
 interface IChatListProps {
-  channel: Channel;
   chats: Chat[]
 }
 
-const ChatList: React.FC<IChatListProps> = ({ channel, chats }) => {
-
-
+const ChatList: React.FC<IChatListProps> = ({ chats }) => {
   const [activeChat, setActiveChat] = React.useState<string | null>(null);
 
   const handleClickChat = (id: string) => {
