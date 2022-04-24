@@ -4,7 +4,7 @@ import {
     StyleSheet,
     View,
 } from "react-native";
-import { Button, IconButton, TextInput } from "react-native-paper";
+import { IconButton, TextInput } from "react-native-paper";
 import { findChannel } from "../../api/channel";
 import Channel from "../../types/Channel";
 

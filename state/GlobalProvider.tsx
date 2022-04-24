@@ -10,8 +10,6 @@ export const GlobalContext = createContext<any>(initialState);
 
 export const GlobalProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  console.log('state', state);
-
   function SaveUserData(userData: User) {
     dispatch({
       type: 'SAVE_USER_DATA',

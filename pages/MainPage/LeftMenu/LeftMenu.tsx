@@ -7,9 +7,12 @@ import { navigateKostil } from "../MainPage";
 import { Colors, IconButton } from "react-native-paper";
 import { getChannels } from "../../../api/channel";
 import Channel from "../../../types/Channel";
+import Chat from "../../../types/Chat";
+import { getChatsInChannel } from "../../../api/chat";
 
 const LeftMenu = () => {
   const [channels, setChannels] = React.useState<Channel[]>([]);
+  const [chats, setChats] = React.useState<Chat[]>([]);
 
   const [selectedChannel, setSelectedChannel] = React.useState<Channel | null>(null);
 
@@ -20,9 +23,14 @@ const LeftMenu = () => {
     })
   }, [])
 
-  const handleClickChannel = (selectedChannel: Channel) => {
+  const handleClickChannel = async (selectedChannel: Channel) => {
     setSelectedChannel(selectedChannel);
+    const chatsInSelectedChannel = await getChatsInChannel(selectedChannel.id)
+    console.log(chatsInSelectedChannel);
+
+    setChats(chatsInSelectedChannel)
   };
+
   const handleClickUserSettings = () => {
     navigateKostil.navigate('UserSettings')
   }
@@ -40,7 +48,7 @@ const LeftMenu = () => {
         <View style={styles.chats__wrapper} >
           {
             selectedChannel &&
-            <ChatList channel={selectedChannel} />
+            <ChatList channel={selectedChannel} chats={chats} />
           }
         </View>
       </View>
@@ -83,9 +91,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   chats__wrapper: {
+    flex: 1,
     backgroundColor: "#181A1B",
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: 'stretch',
+    width: 300,
   },
   bottomBar: {
     backgroundColor: "#1C1E1F",

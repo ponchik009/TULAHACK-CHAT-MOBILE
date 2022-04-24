@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
 import { useInput } from "../../hooks/useInput";
 import { styles } from "./styles";
 
@@ -19,27 +20,32 @@ const LoginBox: React.FC<ILoginBoxProps> = ({
     <>
       <Text style={styles.defaultText}>Вход</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Логин"
+        label="Логин"
         textContentType="nickname"
         value={login.value}
-        onChangeText={login.onChange}
+        style={styles.input}
+        onChangeText={text => login.onChange(text)}
       />
       <TextInput
-        style={styles.input}
-        placeholder="Пароль"
-        secureTextEntry
+        label="Пароль"
         textContentType="password"
+        secureTextEntry
+        style={styles.input}
         value={password.value}
         onChangeText={password.onChange}
       />
-      <Button
-        title="Войти"
-        onPress={() => handleLogInPress(login.value, password.value)}
-      />
+      <Button mode="contained" style={styles.input} onPress={() => handleLogInPress(login.value, password.value)}>
+        <Text>
+          Войти
+        </Text>
+      </Button>
       <View style={styles.bottomBlock}>
         <Text style={styles.defaultText}>Еще нет аккаунта?</Text>
-        <Button title="Регистрация" onPress={handleChangePress} />
+        <Button onPress={handleChangePress} >
+          <Text>
+            Регистрация
+          </Text>
+        </Button>
       </View>
     </>
   );

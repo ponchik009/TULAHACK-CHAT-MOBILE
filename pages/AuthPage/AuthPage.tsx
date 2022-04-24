@@ -4,6 +4,7 @@ import { loginAuth, register } from "../../api/auth";
 import { getChat } from "../../api/chat";
 import LoginBox from "../../components/AuthBox/LoginBox";
 import RegisterBox from "../../components/AuthBox/RegisterBox";
+import { useInput } from "../../hooks/useInput";
 import { GlobalContext } from "../../state/GlobalProvider";
 import { styles } from "./styles";
 
@@ -14,7 +15,7 @@ interface IAuthProps {
 const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
   const [isLoginBox, setIsLoginBox] = React.useState(true);
   const [isError, setIsError] = React.useState(false)
-
+  const passwordInput = useInput("");
   const handleRegiserOpen = () => {
     setIsError(false)
     setIsLoginBox(false);
@@ -26,8 +27,6 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
 
   const handleLogIn = async (login: string, password: string) => {
     try {
-      console.log('as');
-
       const userData = await loginAuth(login, password)
       handleMainPageOpen();
     } catch (error) {
@@ -44,6 +43,9 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
   ) => {
     try {
       const userData = await register(login, username, aboutMe, password, confirmPassword)
+      await loginAuth(userData.login, passwordInput.value)
+      console.log(userData);
+
       handleMainPageOpen();
     } catch (error) {
       setIsError(true)
@@ -68,6 +70,7 @@ const AuthPage: React.FC<IAuthProps> = ({ handleMainPageOpen }) => {
           <RegisterBox
             handleChangePress={handleLogInOpen}
             handleRegisterPress={handleRegister}
+            passwordInput={passwordInput}
           />
         )}
       </View>

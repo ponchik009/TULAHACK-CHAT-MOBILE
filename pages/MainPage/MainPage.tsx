@@ -29,7 +29,7 @@ const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
       renderLeftActions={LeftSideBar}
       overshootLeft={false}
       overshootRight={false}
-      onSwipeableOpen={(direction) => console.log(direction)}
+      onSwipeableOpen={(direction) => { }}
       ref={sideBarRef}
       containerStyle={{
         flexDirection: "column",

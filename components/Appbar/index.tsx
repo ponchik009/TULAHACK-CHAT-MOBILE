@@ -36,7 +36,7 @@ const AppBar: React.FC<AppBarProps> = ({ sideBarRef }: any) => {
         icon="magnify"
         color={Colors.white}
         size={20}
-        onPress={() => console.log("Pressed")}
+        onPress={() => { }}
       />
       <IconButton
         icon="account-multiple"
@@ -59,9 +59,9 @@ const AppBar: React.FC<AppBarProps> = ({ sideBarRef }: any) => {
           />
         }
       >
-        <Menu.Item onPress={() => {}} title="Закреплённые сообщения" />
-        <Menu.Item onPress={() => {}} title="Параметры канала" />
-        <Menu.Item onPress={() => {}} title="Параметры уведомлений" />
+        <Menu.Item onPress={() => { }} title="Закреплённые сообщения" />
+        <Menu.Item onPress={() => { }} title="Параметры канала" />
+        <Menu.Item onPress={() => { }} title="Параметры уведомлений" />
       </Menu>
     </View>
   );

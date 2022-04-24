@@ -14,34 +14,36 @@ import Chat from "../../types/Chat";
 
 interface IChatListProps {
   channel: Channel;
+  chats: Chat[]
 }
 
-const ChatList: React.FC<IChatListProps> = ({ channel }) => {
-  const [chats, setChats] = React.useState<Chat[]>([]);
+const ChatList: React.FC<IChatListProps> = ({ channel, chats }) => {
+
 
   const [activeChat, setActiveChat] = React.useState<string | null>(null);
 
   const handleClickChat = (id: string) => {
+
     setActiveChat(id);
   };
 
-  const renderItem: ListRenderItem<Chat> = ({ item }: { item: Chat }) => (
+  const renderItem: ListRenderItem<Chat> = ({ item: chat }: { item: Chat }) => (
     <TouchableOpacity
-      style={[activeChat === item.id && styles.selectedChat, styles.chat]}
-      onPress={() => handleClickChat(item.id)}
+      style={[activeChat === chat.id && styles.selectedChat, styles.chat]}
+      onPress={() => handleClickChat(chat.id)}
     >
       <IconButton
         icon="camera"
         color={Colors.white}
         size={20}
-        onPress={() => console.log('Pressed')}
+        onPress={() => { }}
       />
       {/* <Image
         source={item.avatarPath}
         style={{ borderRadius: 50, width: 40, height: 40 }}
       /> */}
       <View style={{ marginLeft: 5 }}>
-        <Text style={{ fontSize: 16, color: "#fff" }}>{item.name}</Text>
+        <Text style={{ fontSize: 16, color: "#fff" }}>{chat.name}</Text>
         <Text style={{ fontSize: 14, color: "#BABABA" }}>
           Ник: последнее сообщение
         </Text>
@@ -51,12 +53,11 @@ const ChatList: React.FC<IChatListProps> = ({ channel }) => {
 
   return (
     <>
-      <Text style={{ marginTop: 10, fontSize: 18, color: "#fff" }}>
+      {/* <Text style={{ marginTop: 10, fontSize: 18, color: "#fff" }}>
         {channel.name}
-      </Text>
+      </Text> */}
       <FlatList
         data={chats}
-        keyExtractor={(channel) => String(channel.id)}
         renderItem={renderItem}
         style={{ paddingVertical: 10, marginTop: 10 }}
       />

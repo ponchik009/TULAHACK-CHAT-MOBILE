@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
 import { useInput } from "../../hooks/useInput";
 import { styles } from "./styles";
 
@@ -12,14 +13,19 @@ interface IRegisterBoxProps {
     password: string,
     confirmPassword: string
   ) => void;
+  passwordInput: {
+    value: string;
+    onChange: (text: string) => void;
+  }
 }
 
 const RegisterBox: React.FC<IRegisterBoxProps> = ({
   handleChangePress,
   handleRegisterPress,
+  passwordInput
 }) => {
   const login = useInput("");
-  const password = useInput("");
+
   const confirmPassword = useInput("");
   const username = useInput("");
   const aboutMe = useInput("");
@@ -53,8 +59,8 @@ const RegisterBox: React.FC<IRegisterBoxProps> = ({
         placeholder="Пароль"
         secureTextEntry
         textContentType="password"
-        value={password.value}
-        onChangeText={password.onChange}
+        value={passwordInput.value}
+        onChangeText={passwordInput.onChange}
       />
       <TextInput
         style={styles.input}
@@ -65,20 +71,23 @@ const RegisterBox: React.FC<IRegisterBoxProps> = ({
         onChangeText={confirmPassword.onChange}
       />
       <Button
-        title="Зарегистрироваться"
         onPress={() =>
           handleRegisterPress(
             login.value,
             username.value,
             aboutMe.value,
-            password.value,
+            passwordInput.value,
             confirmPassword.value
           )
         }
-      />
+      >
+        <Text>Зарегистрироваться</Text>
+      </Button>
       <View style={styles.bottomBlock}>
         <Text style={styles.defaultText}>Уже есть аккаунт?</Text>
-        <Button title="Войти" onPress={handleChangePress} />
+        <Button onPress={handleChangePress}>
+          <Text>Войти</Text>
+        </Button>
       </View>
     </>
   );

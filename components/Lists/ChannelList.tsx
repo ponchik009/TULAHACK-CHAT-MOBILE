@@ -35,7 +35,7 @@ const ChannelList: React.FC<IChannelListProps> = ({
         icon="camera"
         color={Colors.white}
         size={20}
-        onPress={() => console.log('Pressed')}
+        onPress={() => { }}
       />
 
     </TouchableOpacity>
