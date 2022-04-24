@@ -58,8 +58,8 @@ const MainPage: React.FC<IMainProps> = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <AppBar sideBarRef={sideBarRef} />
         <ScrollView
-          contentContainerStyle={{ flex: 1, flexGrow: 12 }}
-          style={{ flex: 1, backgroundColor: "#303030" }}
+          contentContainerStyle={{ flex: 1 }}
+          style={{ flexBasis: 1, backgroundColor: "#303030" }}
         >
           {messages.map((message) => {
             return <MessageComponent key={message.id} message={message.text} sender={message.sender} />
