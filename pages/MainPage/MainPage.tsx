@@ -13,6 +13,7 @@ import stompClient from "../../api/websocket";
 import Message from "../../types/Message";
 import MessageComponent from "../../components/MessageComponent";
 import { getToken } from "../../api/token";
+import { getMessagesInChat } from "../../api/chat";
 
 interface IMainProps {
   handleAuthPageOpen: () => void;
@@ -25,6 +26,13 @@ const MainPage: React.FC<IMainProps> = ({ navigation }) => {
   const [messages, setMessages] = React.useState<Message[]>([])
   const [activeChat, setActiveChat] = React.useState<Chat | null>(null);
   React.useEffect(() => {
+    if (activeChat) {
+      getMessagesInChat(activeChat.id).then((messagesInChat) => {
+        setMessages(messagesInChat)
+      })
+
+    }
+
     stompClient.subscribe('/topic/chat/' + activeChat?.id, (incomingMsg: any) => {
       const msg: Message = JSON.parse(incomingMsg.body)
       console.log('====================================');

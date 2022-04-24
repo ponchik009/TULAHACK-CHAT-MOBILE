@@ -1,6 +1,7 @@
 import axios from './axios';
 import Chat, { ChatType } from '../types/Chat';
 import { getToken } from './token';
+import Message from '../types/Message';
 
 export const getChatsInChannel = async (channelId: string): Promise<Chat[]> => {
   return axios
@@ -21,9 +22,9 @@ export const getPersonalChats = async (): Promise<Chat[]> => {
     .then((data) => data.data);
 };
 
-export const getChat = async (chatId: number): Promise<Chat> => {
+export const getMessagesInChat = async (chatId: string): Promise<Message[]> => {
   return axios
-    .get<Chat>('api/chats', {
+    .get<Message[]>('api/chats/' + chatId + '/messages', {
       headers: {
         Authorization: 'Bearer ' + (await getToken()),
       },

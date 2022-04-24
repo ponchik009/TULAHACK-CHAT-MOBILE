@@ -1,11 +1,9 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
 import { loginAuth, register } from "../../api/auth";
-import { getChat } from "../../api/chat";
 import LoginBox from "../../components/AuthBox/LoginBox";
 import RegisterBox from "../../components/AuthBox/RegisterBox";
 import { useInput } from "../../hooks/useInput";
-import { GlobalContext } from "../../state/GlobalProvider";
 import { styles } from "./styles";
 
 interface IAuthProps {
