@@ -11,7 +11,7 @@ import {
 
 import * as ImagePicker from "expo-image-picker";
 import { createChannel } from "../../api/channel";
-import { Button, TextInput } from "react-native-paper";
+import { Button, TextInput, IconButton, Colors } from "react-native-paper";
 
 const CreateChannel = ({ navigation }: any) => {
   const [image, setImage] = React.useState<string | null>(null);
@@ -33,13 +33,10 @@ const CreateChannel = ({ navigation }: any) => {
 
   const handleSubmit = async () => {
     try {
-      await createChannel(name, about, image)
-
-    } catch (error) {
-
-    }
-    navigation.navigate('Home')
-  }
+      await createChannel(name, about, image);
+    } catch (error) {}
+    navigation.navigate("Home");
+  };
 
   return (
     <TouchableOpacity
@@ -52,13 +49,27 @@ const CreateChannel = ({ navigation }: any) => {
       </Text>
       <View style={{ width: "80%" }}>
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          {image && (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 200, height: 200, borderRadius: 50 }}
+          {image ? (
+            <TouchableOpacity onPress={pickImage}>
+              <Image
+                source={{ uri: image }}
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 50,
+                  margin: 10,
+                }}
+              />
+            </TouchableOpacity>
+          ) : (
+            <IconButton
+              icon="camera-image"
+              color={Colors.white}
+              size={200}
+              onPress={pickImage}
+              style={{ image }}
             />
           )}
-          <Button title="Загрузить изображение" onPress={pickImage} />
         </View>
         <View
           style={{
@@ -69,7 +80,7 @@ const CreateChannel = ({ navigation }: any) => {
           <TextInput
             label="Название"
             value={name}
-            onChangeText={text => setName(text)}
+            onChangeText={(text) => setName(text)}
           />
         </View>
         <View
@@ -81,10 +92,10 @@ const CreateChannel = ({ navigation }: any) => {
           <TextInput
             label="Описание"
             value={about}
-            onChangeText={text => setAbout(text)}
+            onChangeText={(text) => setAbout(text)}
           />
         </View>
-        <Button mode="contained" color="#333" onPress={handleSubmit} >
+        <Button mode="contained" color="#333" onPress={handleSubmit}>
           <Text>Создать канал</Text>
         </Button>
       </View>
