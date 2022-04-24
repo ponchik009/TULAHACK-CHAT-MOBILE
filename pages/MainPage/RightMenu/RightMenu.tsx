@@ -4,8 +4,6 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight,
-  Image,
 } from "react-native";
 import { Button } from "react-native-paper";
 import { Colors, IconButton } from "react-native-paper";

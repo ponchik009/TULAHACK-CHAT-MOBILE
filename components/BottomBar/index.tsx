@@ -7,21 +7,17 @@ import {
 } from "react-native";
 import stompClient from "../../api/websocket";
 import { Colors, IconButton } from "react-native-paper";
+import { getToken } from "../../api/token";
 
 export interface BottomBarProps {
     message: {
         value: string;
         onChange: (text: string) => void;
     };
+    send: () => {}
 }
 
-const BottomBar: React.FC<BottomBarProps> = ({ message }) => {
-
-    const send = () => {
-        stompClient.send('/api/chat', {}, JSON.stringify({ from: 'a', text: message.value }));
-
-    }
-
+const BottomBar: React.FC<BottomBarProps> = ({ message, send }) => {
     return (
         <View style={styles.bottomBar}>
             <IconButton

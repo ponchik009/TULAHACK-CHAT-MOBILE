@@ -1,10 +1,15 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { StyleSheet, Text, View } from "react-native";
 import { Colors, IconButton } from "react-native-paper";
+import User from "../../types/User";
 
-const Message: React.FC = () => {
+interface MessageProps {
+  message: string;
+  sender: User
+}
+
+const Message: React.FC<MessageProps> = ({ message, sender }) => {
   return (
     <View style={styles.message}>
       <View>
@@ -17,11 +22,11 @@ const Message: React.FC = () => {
       </View>
       <View style={styles.message__content}>
         <View style={styles.message__meta}>
-          <Text style={styles.message__username}>luxorylife</Text>
+          <Text style={styles.message__username}>{sender.name}</Text>
           <Text style={styles.message__date}>Вчера, 16:55</Text>
         </View>
         <Text style={styles.message__data}>
-          Адаптируем под версию в браузере
+          {message}
         </Text>
       </View>
     </View>
