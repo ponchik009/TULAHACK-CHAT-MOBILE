@@ -26,8 +26,6 @@ const MainPage: React.FC<IMainProps> = ({ navigation }) => {
   const [activeChat, setActiveChat] = React.useState<Chat | null>(null);
   React.useEffect(() => {
     stompClient.subscribe('/topic/chat/' + activeChat?.id, (incomingMsg: any) => {
-
-
       const msg: Message = JSON.parse(incomingMsg.body)
       console.log('====================================');
       console.log(msg);
@@ -56,7 +54,7 @@ const MainPage: React.FC<IMainProps> = ({ navigation }) => {
       childrenContainerStyle={{ flex: 1 }}
     >
       <View style={{ flex: 1 }}>
-        <AppBar sideBarRef={sideBarRef} />
+        <AppBar chatName={activeChat?.name || 'Выберите чат'} sideBarRef={sideBarRef} />
         <ScrollView
           contentContainerStyle={{ flex: 1 }}
           style={{ flexBasis: 1, backgroundColor: "#303030" }}

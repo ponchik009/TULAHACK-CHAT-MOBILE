@@ -2,20 +2,17 @@ import "react-native-gesture-handler";
 import React, { RefObject } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { TouchableHighlight } from "react-native-gesture-handler";
 import {
-  Button,
   Menu,
-  Divider,
-  Provider,
   IconButton,
   Colors,
 } from "react-native-paper";
 export interface AppBarProps {
+  chatName: string
   sideBarRef: RefObject<Swipeable>;
 }
 
-const AppBar: React.FC<AppBarProps> = ({ sideBarRef }: any) => {
+const AppBar: React.FC<AppBarProps> = ({ sideBarRef, chatName }) => {
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
@@ -31,7 +28,7 @@ const AppBar: React.FC<AppBarProps> = ({ sideBarRef }: any) => {
           sideBarRef.current?.openLeft();
         }}
       />
-      <Text style={styles.chatName}>Название чата</Text>
+      <Text style={styles.chatName}>{chatName}</Text>
       <IconButton
         icon="magnify"
         color={Colors.white}
