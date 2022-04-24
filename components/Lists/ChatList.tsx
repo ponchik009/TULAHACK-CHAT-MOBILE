@@ -14,11 +14,12 @@ import Chat from "../../types/Chat";
 interface IChatListProps {
   navigation: { navigate: (nae: string) => void }
   chats: Chat[]
+  channelName: string
   activeChat: Chat | null
   setActiveChat: (chat: Chat) => void
 }
 
-const ChatList: React.FC<IChatListProps> = ({ navigation, chats, activeChat, setActiveChat }) => {
+const ChatList: React.FC<IChatListProps> = ({ channelName, navigation, chats, activeChat, setActiveChat }) => {
   const handleClickChat = (chat: Chat) => {
 
     setActiveChat(chat);
@@ -50,9 +51,9 @@ const ChatList: React.FC<IChatListProps> = ({ navigation, chats, activeChat, set
 
   return (
     <>
-      {/* <Text style={{ marginTop: 10, fontSize: 18, color: "#fff" }}>
-        {channel.name}
-      </Text> */}
+      <Text style={{ marginTop: 10, fontSize: 18, color: "#fff" }}>
+        {channelName}
+      </Text>
       <FlatList
         data={chats}
         renderItem={renderItem}

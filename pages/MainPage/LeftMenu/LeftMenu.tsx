@@ -60,7 +60,7 @@ const LeftMenu: React.FC<LeftMenuProps> = ({ navigation, activeChat, setActiveCh
         </View>
         <View style={styles.chats__wrapper} >
           {
-            <ChatList navigation={navigation} chats={chats} activeChat={activeChat} setActiveChat={setActiveChat} />
+            <ChatList channelName={selectedChannel?.name || 'Личные сообщения'} navigation={navigation} chats={chats} activeChat={activeChat} setActiveChat={setActiveChat} />
           }
         </View>
       </View>
