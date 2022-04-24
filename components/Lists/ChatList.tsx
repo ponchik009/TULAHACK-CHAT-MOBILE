@@ -8,26 +8,26 @@ import {
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Colors, IconButton } from "react-native-paper";
-import { navigateKostil } from "../../pages/MainPage/MainPage";
-import Channel from "../../types/Channel";
+
 import Chat from "../../types/Chat";
 
 interface IChatListProps {
+  navigation: { navigate: (nae: string) => void }
   chats: Chat[]
+  activeChat: Chat | null
+  setActiveChat: (chat: Chat) => void
 }
 
-const ChatList: React.FC<IChatListProps> = ({ chats }) => {
-  const [activeChat, setActiveChat] = React.useState<string | null>(null);
+const ChatList: React.FC<IChatListProps> = ({ navigation, chats, activeChat, setActiveChat }) => {
+  const handleClickChat = (chat: Chat) => {
 
-  const handleClickChat = (id: string) => {
-
-    setActiveChat(id);
+    setActiveChat(chat);
   };
 
   const renderItem: ListRenderItem<Chat> = ({ item: chat }: { item: Chat }) => (
     <TouchableOpacity
-      style={[activeChat === chat.id && styles.selectedChat, styles.chat]}
-      onPress={() => handleClickChat(chat.id)}
+      style={[activeChat?.id === chat.id && styles.selectedChat, styles.chat]}
+      onPress={() => handleClickChat(chat)}
     >
       <IconButton
         icon="camera"
@@ -58,7 +58,7 @@ const ChatList: React.FC<IChatListProps> = ({ chats }) => {
         renderItem={renderItem}
         style={{ paddingVertical: 10, marginTop: 10 }}
       />
-      <Button icon="plus-circle" mode="text" contentStyle={styles.btn} style={styles.btn} color="white" onPress={() => navigateKostil.navigate('CreateChat')}>
+      <Button icon="plus-circle" mode="text" contentStyle={styles.btn} style={styles.btn} color="white" onPress={() => navigation.navigate('CreateChat')}>
         Создать чат
       </Button>
     </>

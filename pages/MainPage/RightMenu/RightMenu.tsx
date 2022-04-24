@@ -9,11 +9,14 @@ import {
 } from "react-native";
 import { Button } from "react-native-paper";
 import { Colors, IconButton } from "react-native-paper";
-import { navigateKostil } from "../MainPage";
 
-const RightMenu = () => {
+interface RightMenuProps {
+  navigation: { navigate: (name: string) => void }
+}
+
+const RightMenu: React.FC<RightMenuProps> = ({ navigation }) => {
   const handleInviteUsers = () => {
-    navigateKostil.navigate("InviteUsers");
+    navigation.navigate("InviteUsers");
   };
   return (
     <View style={styles.constainer}>
@@ -24,25 +27,25 @@ const RightMenu = () => {
             icon="magnify"
             color={Colors.white}
             size={20}
-            onPress={() => {}}
+            onPress={() => { }}
           />
           <IconButton
             icon="pin"
             color={Colors.white}
             size={20}
-            onPress={() => {}}
+            onPress={() => { }}
           />
           <IconButton
             icon="bell"
             color={Colors.white}
             size={20}
-            onPress={() => {}}
+            onPress={() => { }}
           />
           <IconButton
             icon="cog"
             color={Colors.white}
             size={20}
-            onPress={() => {}}
+            onPress={() => { }}
           />
         </View>
         <View>
@@ -62,7 +65,7 @@ const RightMenu = () => {
               icon="account"
               color={Colors.white}
               size={20}
-              onPress={() => {}}
+              onPress={() => { }}
             />
             <Text style={styles.username}>CoolSheff</Text>
           </View>

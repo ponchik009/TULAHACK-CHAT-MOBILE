@@ -6,18 +6,18 @@ import {
   View,
   Text,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Colors, IconButton, Modal, Portal } from "react-native-paper";
-import { navigateKostil } from "../../pages/MainPage/MainPage";
 import Channel from "../../types/Channel";
 
 interface IChannelListProps {
+  navigation: { navigate: (name: string) => void }
   channels: Channel[];
   selectedChannel: Channel | null;
   handleClickChannel: (selectedChannel: Channel | null) => void;
 }
 
 const ChannelList: React.FC<IChannelListProps> = ({
+  navigation,
   channels,
   selectedChannel,
   handleClickChannel,
@@ -40,11 +40,11 @@ const ChannelList: React.FC<IChannelListProps> = ({
   const hideModal = () => setVisible(false);
 
   const handleClickCreateChannel = () => {
-    navigateKostil.navigate('CreateChannel')
+    navigation.navigate('CreateChannel')
     hideModal()
   }
   const handleClickFindChannel = () => {
-    navigateKostil.navigate('FindChannel')
+    navigation.navigate('FindChannel')
     hideModal()
   }
 

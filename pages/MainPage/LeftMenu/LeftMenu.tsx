@@ -3,18 +3,25 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ChatList from "../../../components/Lists/ChatList";
 import ChannelList from "../../../components/Lists/ChannelList";
-import { navigateKostil } from "../MainPage";
+
 import { Colors, IconButton } from "react-native-paper";
 import { getChannels } from "../../../api/channel";
 import Channel from "../../../types/Channel";
 import Chat from "../../../types/Chat";
 import { getChatsInChannel, getPersonalChats } from "../../../api/chat";
 
-const LeftMenu = () => {
+interface LeftMenuProps {
+  navigation: { navigate: (nae: string) => void },
+  activeChat: Chat | null
+  setActiveChat: (chat: Chat) => void
+}
+
+const LeftMenu: React.FC<LeftMenuProps> = ({ navigation, activeChat, setActiveChat }) => {
   const [channels, setChannels] = React.useState<Channel[]>([]);
   const [chats, setChats] = React.useState<Chat[]>([]);
 
   const [selectedChannel, setSelectedChannel] = React.useState<Channel | null>(null);
+
 
   React.useEffect(() => {
     getChannels().then(channels => {
@@ -37,7 +44,7 @@ const LeftMenu = () => {
   };
 
   const handleClickUserSettings = () => {
-    navigateKostil.navigate('UserSettings')
+    navigation.navigate('UserSettings')
   }
 
   return (
@@ -45,6 +52,7 @@ const LeftMenu = () => {
       <View style={styles.columns} >
         <View style={styles.channels__wrapper}>
           <ChannelList
+            navigation={navigation}
             channels={channels}
             selectedChannel={selectedChannel}
             handleClickChannel={handleClickChannel}
@@ -52,7 +60,7 @@ const LeftMenu = () => {
         </View>
         <View style={styles.chats__wrapper} >
           {
-            <ChatList chats={chats} />
+            <ChatList navigation={navigation} chats={chats} activeChat={activeChat} setActiveChat={setActiveChat} />
           }
         </View>
       </View>
