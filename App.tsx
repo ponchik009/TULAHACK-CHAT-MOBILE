@@ -15,6 +15,7 @@ import CreateChannel from "./pages/CreateChannel/Index";
 import UserSettings from "./pages/UserSettings";
 import InviteUsers from "./pages/InviteUsers";
 import FindChannel from "./pages/FindChannel";
+import { NativeBaseProvider } from "native-base";
 
 const Stack = createStackNavigator();
 
@@ -27,39 +28,41 @@ const App = () => {
   };
 
   return (
-    <Provider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#303030" }}>
-        {/* <GlobalProvider> */}
-        {isAuth ? (
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Home"
-                component={MainPage}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Profile"
-                component={AuthPage}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen name="CreateChat" component={CreateChat} />
-              <Stack.Screen name="CreateChannel" component={CreateChannel} />
-              <Stack.Screen name="FindChannel" component={FindChannel} />
-              <Stack.Screen name="InviteUsers" component={InviteUsers} />
-              <Stack.Screen name="UserSettings">
-                {(props) => <UserSettings {...props} setIsAuth={setIsAuth} />}
-              </Stack.Screen>
-            </Stack.Navigator>
-          </NavigationContainer>
-        ) : (
-          <View style={styles.wrapper}>
-            <AuthPage handleMainPageOpen={handleMainPageOpen} />
-          </View>
-        )}
-        {/* </GlobalProvider> */}
-      </SafeAreaView>
-    </Provider>
+    <NativeBaseProvider>
+      <Provider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#303030" }}>
+          {/* <GlobalProvider> */}
+          {isAuth ? (
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Home"
+                  component={MainPage}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Profile"
+                  component={AuthPage}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen name="CreateChat" component={CreateChat} />
+                <Stack.Screen name="CreateChannel" component={CreateChannel} />
+                <Stack.Screen name="FindChannel" component={FindChannel} />
+                <Stack.Screen name="InviteUsers" component={InviteUsers} />
+                <Stack.Screen name="UserSettings">
+                  {(props) => <UserSettings {...props} setIsAuth={setIsAuth} />}
+                </Stack.Screen>
+              </Stack.Navigator>
+            </NavigationContainer>
+          ) : (
+            <View style={styles.wrapper}>
+              <AuthPage handleMainPageOpen={handleMainPageOpen} />
+            </View>
+          )}
+          {/* </GlobalProvider> */}
+        </SafeAreaView>
+      </Provider>
+    </NativeBaseProvider>
   );
 };
 const styles = StyleSheet.create({
