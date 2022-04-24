@@ -8,9 +8,7 @@ import Message from "../../components/Message";
 import { useInput } from "../../hooks/useInput";
 import AppBar from "../../components/Appbar";
 import BottomBar from "../../components/BottomBar";
-import { SafeAreaView } from "react-native-safe-area-context";
-import stompClient from "../../api/websocket";
-import { getToken } from "../../api/token";
+import { View } from "native-base";
 
 interface IMainProps {
   handleAuthPageOpen: () => void;
@@ -27,19 +25,20 @@ const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
 
   return (
     <Swipeable
-      renderLeftActions={LeftSideBar}
       renderRightActions={RightSideBar}
+      renderLeftActions={LeftSideBar}
       overshootLeft={false}
       overshootRight={false}
+      onSwipeableOpen={(direction) => console.log(direction)}
       ref={sideBarRef}
       containerStyle={{
         flexDirection: "column",
         flex: 1,
-        backgroundColor: "#000",
+        backgroundColor: "#fff",
       }}
       childrenContainerStyle={{ flex: 1 }}
     >
-      <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <AppBar sideBarRef={sideBarRef} />
         <ScrollView
           contentContainerStyle={{ flex: 1, flexGrow: 12 }}
@@ -52,7 +51,7 @@ const MainPage: React.FC<IMainProps> = ({ navigation }: any) => {
           <Message />
         </ScrollView>
         <BottomBar message={message} />
-      </SafeAreaView>
+      </View>
     </Swipeable>
   );
 };
