@@ -5,6 +5,7 @@ import {
     View,
     TextInput,
 } from "react-native";
+import stompClient from "../../api/websocket";
 import { Colors, IconButton } from "react-native-paper";
 
 export interface BottomBarProps {
@@ -15,6 +16,12 @@ export interface BottomBarProps {
 }
 
 const BottomBar: React.FC<BottomBarProps> = ({ message }) => {
+
+    const send = () => {
+        stompClient.send('/api/chat', {}, JSON.stringify({ from: 'a', text: message.value }));
+
+    }
+
     return (
         <View style={styles.bottomBar}>
             <IconButton
@@ -40,7 +47,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ message }) => {
                 icon="send"
                 color={Colors.white}
                 size={20}
-                onPress={() => { }}
+                onPress={() => { send() }}
             />
         </View>
     )

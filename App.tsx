@@ -15,13 +15,13 @@ import CreateChannel from "./pages/CreateChannel/Index";
 import UserSettings from "./pages/UserSettings";
 import InviteUsers from "./pages/InviteUsers";
 import FindChannel from "./pages/FindChannel";
+import stompClient from "./api/websocket";
+import { getToken } from "./api/token";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [isAuth, setIsAuth] = React.useState(true);
-  console.log(setIsAuth);
-
+  const [isAuth, setIsAuth] = React.useState(false);
   const handleMainPageOpen = () => {
     setIsAuth(true);
   };

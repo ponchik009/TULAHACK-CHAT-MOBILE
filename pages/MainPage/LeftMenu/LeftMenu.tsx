@@ -1,41 +1,27 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import { IChannel } from "../../../types/entities";
+import { StyleSheet, View, Text } from "react-native";
 import ChatList from "../../../components/Lists/ChatList";
 import ChannelList from "../../../components/Lists/ChannelList";
-import { TouchableHighlight } from "react-native-gesture-handler";
 import { navigateKostil } from "../MainPage";
 import { Colors, IconButton } from "react-native-paper";
+import { getChannels } from "../../../api/channel";
+import Channel from "../../../types/Channel";
 
 const LeftMenu = () => {
-  const [channels, setChannels] = React.useState<IChannel[]>([
-    {
-      id: 0,
-      name: "name 0",
-      image: require(`../../../assets/ls_channel_logo.png`),
-    },
-    {
-      id: 1,
-      name: "name 1",
-      image: require(`../../../assets/channel_logo.png`),
-    },
-    {
-      id: 2,
-      name: "name 2",
-      image: require(`../../../assets/channel_logo.png`),
-    },
-    {
-      id: 3,
-      name: "name 3",
-      image: require(`../../../assets/channel_logo.png`),
-    },
-  ]);
+  const [channels, setChannels] = React.useState<Channel[]>([]);
 
-  const [activeChannel, setActiveChannel] = React.useState<number>(0);
+  const [selectedChannel, setSelectedChannel] = React.useState<Channel | null>(null);
 
-  const handleClickChannel = (id: number) => {
-    setActiveChannel(id);
+  React.useEffect(() => {
+    getChannels().then(channels => {
+      console.log(channels);
+      setChannels(channels)
+    })
+  }, [])
+
+  const handleClickChannel = (selectedChannel: Channel) => {
+    setSelectedChannel(selectedChannel);
   };
   const handleClickUserSettings = () => {
     navigateKostil.navigate('UserSettings')
@@ -47,12 +33,15 @@ const LeftMenu = () => {
         <View style={styles.channels__wrapper}>
           <ChannelList
             channels={channels}
-            activeItem={activeChannel}
+            selectedChannel={selectedChannel}
             handleClickChannel={handleClickChannel}
           />
         </View>
         <View style={styles.chats__wrapper} >
-          <ChatList channel={channels[activeChannel]} />
+          {
+            selectedChannel &&
+            <ChatList channel={selectedChannel} />
+          }
         </View>
       </View>
       <View style={styles.bottomBar}>

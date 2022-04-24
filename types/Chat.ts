@@ -5,6 +5,7 @@ export enum ChatType {
 }
 
 export default interface Chat {
+  id: string;
   name: string;
   chatType: ChatType;
   avatarPath: string;

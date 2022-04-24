@@ -1,4 +1,5 @@
 export default interface User {
+  id: string;
   about: string;
   login: string;
   avatar: {

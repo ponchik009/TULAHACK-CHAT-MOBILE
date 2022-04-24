@@ -1,52 +1,49 @@
 import React from "react";
 import {
   FlatList,
-  Image,
   ListRenderItem,
   StyleSheet,
   View,
   Text,
-
-  Alert,
-  Pressable,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Colors, IconButton, Modal, Portal } from "react-native-paper";
 import { navigateKostil } from "../../pages/MainPage/MainPage";
-
-import { IChannel } from "../../types/entities";
+import Channel from "../../types/Channel";
 
 interface IChannelListProps {
-  channels: IChannel[];
-  activeItem: number;
-  handleClickChannel: (id: number) => void;
+  channels: Channel[];
+  selectedChannel: Channel | null;
+  handleClickChannel: (selectedChannel: Channel) => void;
 }
 
 const ChannelList: React.FC<IChannelListProps> = ({
   channels,
-  activeItem,
+  selectedChannel,
   handleClickChannel,
 }) => {
-  const renderItem: ListRenderItem<IChannel> = ({
+  const renderItem: ListRenderItem<Channel> = ({
     item,
   }: {
-    item: IChannel;
+    item: Channel;
   }) => (
     <TouchableOpacity
-      style={[activeItem === item.id && styles.selectedChannel, styles.channel]}
-      onPress={() => handleClickChannel(item.id)}
+      style={[selectedChannel?.id === item.id && styles.selectedChannel, styles.channel]}
+      onPress={() => handleClickChannel(item)}
     >
-      <Image
-        source={item.image}
-        style={{ borderRadius: 50, width: 56, height: 56 }}
+      <IconButton
+        icon="camera"
+        color={Colors.white}
+        size={20}
+        onPress={() => console.log('Pressed')}
       />
+
     </TouchableOpacity>
   );
   const [visible, setVisible] = React.useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: 'white', padding: 20 };
 
   const handleClickCreateChannel = () => {
     navigateKostil.navigate('CreateChannel')
