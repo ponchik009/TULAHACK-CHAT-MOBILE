@@ -92,16 +92,10 @@ const styles = StyleSheet.create({
   users: {
     flexDirection: "column",
   },
-  buttonImageIconStyle: {
-    padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: "stretch",
-  },
   constainer: {
     backgroundColor: "#181A1B",
-    flexDirection: "row",
+    flexDirection: 'column',
+    width: 300,
   },
   content: {
     flex: 1,
